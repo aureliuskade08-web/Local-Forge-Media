@@ -1,0 +1,1308 @@
+<title>LocalForge</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+
+<style>
+/* ─── PEARL LUXURY — single-theme light ─── */
+:root {
+  --bg:             #FAF9EF;
+  --bg-white:       #FFFFFF;
+  --surface:        rgba(255,255,255,0.86);
+  --border:         rgba(0,0,0,0.07);
+  --border-strong:  rgba(0,0,0,0.13);
+  --text:           #090A14;
+  --text-2:         #686B8A;
+  --text-3:         #A4A6BF;
+  --data-bg:        #0E0F1A;
+  --data-border:    rgba(255,255,255,0.07);
+  --serif:   'Libre Baskerville', Georgia, serif;
+  --cursive: 'Dancing Script', cursive;
+  --sans:    'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+/* Dark theme override — keeps the page readable when forced */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #F2F4FA; --bg-white: #FFFFFF;
+    --border: rgba(0,0,0,0.07); --border-strong: rgba(0,0,0,0.13);
+    --text: #090A14; --text-2: #686B8A; --text-3: #A4A6BF;
+    color-scheme: light;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--sans); font-size: 16px;
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── IRIS ANIMATION ── */
+@keyframes iris {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-cx-outer, .iris-bar, .btn-iris::before { animation: none !important; }
+}
+
+/* ── PIPO GRADIENT BG ── */
+.pipo-bg {
+  position: fixed; inset: 0; z-index: -1;
+  overflow: hidden; pointer-events: none;
+}
+.pipo-bg-inner {
+  position: absolute; inset: -8vmin;
+  filter: blur(5vmin);
+  background-color: #FAF9EF;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.305'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 68.1% 46.03%, rgba(230,176,147,1) 0%, rgba(230,176,147,0.844) 10.28%, rgba(230,176,147,0.5) 20.55%, rgba(230,176,147,0.156) 30.83%, rgba(230,176,147,0) 41.1%),
+    radial-gradient(circle at 25.17% 75.99%, rgba(163,206,255,1) 0%, rgba(163,206,255,0.844) 11.15%, rgba(163,206,255,0.5) 22.3%, rgba(163,206,255,0.156) 33.45%, rgba(163,206,255,0) 44.6%),
+    radial-gradient(circle at 53.11% 12.71%, rgba(250,249,239,1) 0%, rgba(250,249,239,0.844) 16.66%, rgba(250,249,239,0.5) 33.33%, rgba(250,249,239,0.156) 49.99%, rgba(250,249,239,0) 66.65%);
+  background-size: 120px 120px, auto, auto, auto;
+  background-blend-mode: overlay, normal, normal, normal;
+}
+.pipo-bg svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.305; mix-blend-mode: overlay;
+}
+
+/* ── IRIS TOPPER ── */
+.iris-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 2.5px;
+  z-index: 110;
+  background: linear-gradient(90deg, #A8DEFF, #C4B5FD, #FBA8D3, #A7F3D0, #A8DEFF);
+  background-size: 200% 100%;
+  animation: iris 6s ease infinite;
+}
+
+/* ── LAYOUT ── */
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left:  max(32px, env(safe-area-inset-left, 0px));
+  padding-right: max(32px, env(safe-area-inset-right, 0px));
+}
+
+/* ── LOGO CRYSTAL (faceted diamond mark) ── */
+.logo-crystal {
+  width: 36px; height: 36px;
+  position: relative; flex-shrink: 0;
+}
+.logo-cx-outer {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #A8DEFF, #C4B5FD, #FBA8D3, #A7F3D0, #A8DEFF);
+  background-size: 300% 300%;
+  animation: iris 7s ease infinite;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.logo-cx-inner {
+  position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px;
+  background: rgba(255,255,255,0.92);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-cx-core {
+  width: 9px; height: 9px;
+  background: linear-gradient(135deg, #A8DEFF 0%, #C4B5FD 60%, #A7F3D0 100%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.5;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 2.5px; left: 0; right: 0; z-index: 100;
+  padding: 18px 0;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav.is-scrolled {
+  background: rgba(250,249,239,0.92);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border-bottom-color: var(--border);
+}
+.nav-row { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-wordmark {
+  font-family: var(--serif); font-size: 15px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.01em;
+}
+.nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+.nav-links a {
+  display: block; padding: 7px 14px;
+  font-size: 14px; font-weight: 400; color: var(--text-2);
+  text-decoration: none; border-radius: 8px;
+  transition: color 0.14s, background 0.14s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(0,0,0,0.04); }
+.nav-cta {
+  padding: 8px 20px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: var(--text);
+  text-decoration: none; background: var(--bg-white);
+  border: 1px solid var(--border-strong);
+  transition: background 0.14s, border-color 0.14s;
+  white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.nav-cta:hover { background: var(--bg); border-color: rgba(0,0,0,0.2); }
+
+/* ── IRIS BUTTON (pearl inner on light bg) ── */
+.btn-iris {
+  position: relative; display: inline-flex; align-items: center;
+  padding: 13px 28px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; font-family: var(--sans);
+  color: var(--text); text-decoration: none;
+  z-index: 0; overflow: hidden;
+}
+.btn-iris::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #A8DEFF, #C4B5FD, #FBA8D3, #A7F3D0, #A8DEFF);
+  background-size: 300% 300%;
+  animation: iris 7s ease infinite;
+  z-index: -1;
+}
+.btn-iris::after {
+  content: '';
+  position: absolute; inset: 1.5px;
+  background: #FAFBFF; border-radius: 8.5px;
+  z-index: -1; transition: opacity 0.22s;
+}
+.btn-iris:hover::after { opacity: 0.25; }
+
+/* ── PLAIN BUTTON ── */
+.btn-plain {
+  display: inline-flex; align-items: center;
+  padding: 13px 24px; border-radius: 10px;
+  font-size: 15px; font-weight: 400; color: var(--text-2);
+  text-decoration: none;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-white);
+  transition: color 0.14s, border-color 0.14s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.btn-plain:hover { color: var(--text); border-color: rgba(0,0,0,0.2); }
+
+/* ── DEMO BUTTON ── */
+.btn-demo {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: var(--text-2);
+  text-decoration: none; cursor: pointer;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-white);
+  transition: color 0.14s, border-color 0.14s, background 0.14s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  font-family: var(--sans);
+}
+.btn-demo:hover { color: var(--text); border-color: rgba(0,0,0,0.2); }
+.btn-demo svg { flex-shrink: 0; opacity: 0.55; }
+.demo-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+.demo-hint { font-size: 12px; color: var(--text-3); }
+
+/* ── DIVIDER ── */
+.rule { height: 1px; background: var(--border); }
+
+/* ── SECTION BASE ── */
+.sec { padding: 96px 0; }
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 700; letter-spacing: -0.025em;
+  color: var(--text); line-height: 1.1;
+  text-wrap: balance; margin-bottom: 52px;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: 115px; padding-bottom: 100px; overflow: hidden;
+}
+.hero-glow { position: absolute; pointer-events: none; border-radius: 50%; }
+.hero-glow-1 {
+  width: 800px; height: 800px;
+  background: radial-gradient(circle,
+    rgba(196,181,253,0.16) 0%, rgba(168,222,255,0.08) 45%, transparent 70%);
+  top: -300px; left: -250px;
+}
+.hero-glow-2 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle,
+    rgba(251,168,211,0.1) 0%, rgba(167,243,208,0.06) 55%, transparent 70%);
+  bottom: -120px; right: -60px;
+}
+.hero-body { position: relative; z-index: 1; }
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(46px, 7.5vw, 96px);
+  font-weight: 700; line-height: 1.055;
+  letter-spacing: -0.032em; color: var(--text);
+  max-width: 820px; margin-bottom: 28px; text-wrap: balance;
+}
+.hero-p {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-2); line-height: 1.7;
+  font-weight: 300; max-width: 440px; margin-bottom: 44px;
+}
+.hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* ── WORK PANEL ── */
+.work-panel {
+  display: grid; grid-template-columns: 1fr 360px;
+  border: 1px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  background: var(--bg-white);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.06), 0 1px 0 rgba(0,0,0,0.04);
+}
+.work-info { padding: 52px; border-right: 1px solid var(--border); }
+.work-name {
+  font-family: var(--serif);
+  font-size: 38px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.022em;
+  line-height: 1; margin-bottom: 22px;
+}
+.work-desc {
+  font-size: 15px; color: var(--text-2);
+  line-height: 1.75; font-weight: 300;
+  max-width: 380px; margin-bottom: 10px;
+}
+.work-note {
+  font-size: 13px; color: var(--text-3);
+  font-style: italic; font-family: var(--serif);
+  margin-bottom: 24px;
+}
+.tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 0; }
+.tag {
+  font-size: 12px; font-weight: 400; color: var(--text-2);
+  background: rgba(0,0,0,0.04); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 11px;
+}
+
+/* ── WORK DATA (dark contrast column) ── */
+.work-data {
+  padding: 28px 22px;
+  background: var(--data-bg);
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 4px;
+}
+.data-header {
+  display: grid; grid-template-columns: 1fr 82px 60px;
+  gap: 8px; padding: 0 8px 9px; margin-bottom: 2px;
+  border-bottom: 1px solid var(--data-border);
+}
+.data-col-label {
+  font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.28);
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+.data-row {
+  display: grid; grid-template-columns: 1fr 82px 60px;
+  gap: 8px; align-items: center; padding: 7px 8px;
+  border-radius: 6px; transition: background 0.12s;
+}
+.data-row:hover { background: rgba(255,255,255,0.04); }
+.dc { font-size: 12px; color: rgba(255,255,255,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.dc.name { color: rgba(255,255,255,0.9); font-size: 12.5px; }
+.dc.amt  { color: #A7F3D0; font-variant-numeric: tabular-nums; }
+.badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 5px; white-space: nowrap; }
+.badge-ok     { background: rgba(167,243,208,0.1); color: #A7F3D0; }
+.badge-review { background: rgba(251,168,211,0.1); color: #FBA8D3; }
+
+/* ── OFFER ── */
+.offer-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+}
+.offer-col {
+  background: var(--bg-white); padding: 40px 36px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.offer-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.015em; line-height: 1.15;
+}
+.offer-body {
+  font-size: 14px; color: var(--text-2);
+  line-height: 1.75; font-weight: 300; flex: 1;
+}
+.offer-foot {
+  font-size: 12px; color: var(--text-3);
+  padding-top: 16px; border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+/* ── WHO ── */
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.who-quote {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.4vw, 26px);
+  font-weight: 400; font-style: italic;
+  color: var(--text); line-height: 1.55; letter-spacing: -0.01em;
+}
+.who-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.who-list li { display: flex; gap: 16px; font-size: 15px; color: var(--text-2); line-height: 1.65; font-weight: 300; }
+.who-list li::before { content: '—'; color: var(--text-3); flex-shrink: 0; font-family: var(--sans); margin-top: 0.05em; }
+
+/* ── CONTACT BIG ── */
+.contact-big { margin: 32px 0 12px; }
+.contact-phone {
+  display: block;
+  font-family: var(--cursive);
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.05;
+  letter-spacing: -0.01em;
+  transition: opacity 0.15s;
+}
+.contact-phone:hover { opacity: 0.65; }
+.contact-nudge {
+  font-size: 15px; color: var(--text-2);
+  font-style: italic; font-family: var(--serif);
+  margin-top: 8px;
+}
+
+/* ── APPLY ── */
+.apply-sec { padding: 120px 0; }
+.apply-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.apply-status { font-size: 12px; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 28px; display: block; }
+.apply-h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 700; letter-spacing: -0.028em;
+  line-height: 1.06; color: var(--text);
+  margin-bottom: 20px; text-wrap: balance;
+}
+.apply-p { font-size: 16px; color: var(--text-2); line-height: 1.7; font-weight: 300; margin-bottom: 40px; }
+.apply-contact { font-size: 13px; color: var(--text-3); margin-top: 20px; }
+.apply-contact a { color: var(--text-2); text-decoration: none; transition: color 0.14s; }
+.apply-contact a:hover { color: var(--text); }
+.apply-contact .sep { margin: 0 8px; opacity: 0.4; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); }
+.footer-row {
+  padding: 36px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-brand { font-family: var(--serif); font-size: 14px; color: var(--text-2); }
+.footer-contact { font-size: 13px; color: var(--text-3); display: flex; gap: 16px; flex-wrap: wrap; }
+.footer-contact a { color: var(--text-3); text-decoration: none; transition: color 0.14s; }
+.footer-contact a:hover { color: var(--text-2); }
+
+/* ── DEMO MODAL ── */
+.mz-modal {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.mz-modal[hidden] { display: none; }
+.mz-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(5,5,12,0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+.mz-frame {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 1140px;
+  height: calc(100vh - 64px); max-height: 900px;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,8,0.55), 0 0 0 1px rgba(255,255,255,0.1);
+}
+.mz-close {
+  position: absolute; top: 14px; right: 14px; z-index: 10;
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.8); font-size: 18px;
+  transition: background 0.14s; font-family: var(--sans);
+  line-height: 1;
+}
+.mz-close:hover { background: rgba(255,255,255,0.24); color: #fff; }
+.mz-iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .work-panel { grid-template-columns: 1fr; }
+  .work-info  { border-right: none; border-bottom: 1px solid var(--border); }
+  .offer-grid { grid-template-columns: 1fr; }
+  .who-grid   { grid-template-columns: 1fr; gap: 40px; }
+  .footer-row { flex-direction: column; text-align: center; }
+  .footer-contact { justify-content: center; }
+  .nav-links  { display: none; }
+}
+@media (max-width: 600px) {
+  .wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .sec { padding: 60px 0; }
+  .sec-title { margin-bottom: 36px; }
+  .hero { padding-top: 88px; padding-bottom: 60px; min-height: unset; }
+  .hero-h1 { font-size: clamp(34px, 9vw, 46px); margin-bottom: 20px; }
+  .hero-p { margin-bottom: 32px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .work-info { padding: 28px 20px; }
+  .work-name { font-size: 28px; }
+  .work-data { display: none; }
+  .offer-col { padding: 28px 20px; }
+  .offer-title { font-size: 19px; }
+  .who-quote { font-size: clamp(16px, 4.5vw, 20px); }
+  .apply-sec { padding: 72px 0; }
+  .apply-h2 { font-size: clamp(26px, 8vw, 36px); }
+  .contact-phone { font-size: clamp(36px, 11vw, 44px); }
+  .nav-cta { padding: 7px 12px; font-size: 12px; }
+  .demo-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .demo-hint { display: none; }
+  .tag { font-size: 11px; padding: 3px 9px; }
+  .footer-contact { flex-direction: column; gap: 6px; }
+}
+@media (max-width: 400px) {
+  .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .hero-h1 { font-size: 30px; letter-spacing: -0.02em; }
+  .contact-phone { font-size: 32px; }
+  .nav-cta { display: none; }
+}
+</style>
+
+<!-- ── IRIS TOPPER ── -->
+<div class="iris-bar" aria-hidden="true"></div>
+
+<!-- ── PIPO BACKGROUND ── -->
+<div class="pipo-bg" aria-hidden="true">
+  <div class="pipo-bg-inner"></div>
+  <svg aria-hidden="true">
+    <filter id="grain-pipo">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain-pipo)"/>
+  </svg>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="#" class="nav-logo" aria-label="LocalForge home">
+        <div class="logo-crystal" aria-hidden="true">
+          <div class="logo-cx-outer"></div>
+          <div class="logo-cx-inner">
+            <div class="logo-cx-core"></div>
+          </div>
+        </div>
+        <span class="nav-wordmark">LocalForge</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#offer">The Offer</a></li>
+        <li><a href="#who">Who It's For</a></li>
+      </ul>
+      <a href="#apply" class="nav-cta">Apply to work together</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-body">
+      <h1 class="hero-h1">I build custom AI software for accounting firms.</h1>
+      <p class="hero-p">
+        Each build is specific to your firm's workflow. No templates, no generics.
+        I take on a small number of clients at a time.
+      </p>
+      <div class="hero-actions">
+        <a href="#apply" class="btn-iris">Apply to work together</a>
+        <a href="#work" class="btn-plain">See the work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── WORK ── -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <h2 class="sec-title">The work.</h2>
+    <div class="work-panel">
+      <div class="work-info">
+        <div class="work-name">Meridian Zero</div>
+        <p class="work-desc">
+          A 401(k) plan statement reconciliation tool. Takes raw PDF statements from Empower
+          and John Hancock, runs a structured five-question intake protocol, and exports a
+          clean matched Excel workbook — every participant, every check row zeroed.
+        </p>
+        <p class="work-note">Built for retirement plan auditors. Currently in production.</p>
+        <div class="tag-row">
+          <span class="tag">Document Processing</span>
+          <span class="tag">Financial Services</span>
+          <span class="tag">PDF → Excel</span>
+          <span class="tag">Reconciliation</span>
+        </div>
+        <div class="demo-row">
+          <button class="btn-demo" id="launchMz" type="button">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M7.5 7.5L13 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M9 1H13V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Launch the live demo
+          </button>
+          <span class="demo-hint">Walk through a real 401(k) reconciliation</span>
+        </div>
+      </div>
+      <div class="work-data" aria-label="Sample Meridian Zero output" role="img">
+        <div class="data-header">
+          <span class="data-col-label">Participant</span>
+          <span class="data-col-label">Contribution</span>
+          <span class="data-col-label">Status</span>
+        </div>
+        <div class="data-row">
+          <span class="dc name">Martinez, C.L.</span>
+          <span class="dc amt">$1,840.00</span>
+          <span class="badge badge-ok">Match</span>
+        </div>
+        <div class="data-row">
+          <span class="dc name">Thompson, S.K.</span>
+          <span class="dc amt">$2,200.00</span>
+          <span class="badge badge-ok">Match</span>
+        </div>
+        <div class="data-row">
+          <span class="dc name">Williams, D.R.</span>
+          <span class="dc amt">$3,100.00</span>
+          <span class="badge badge-review">Review</span>
+        </div>
+        <div class="data-row">
+          <span class="dc name">Chen, A.P.</span>
+          <span class="dc amt">$1,975.00</span>
+          <span class="badge badge-ok">Match</span>
+        </div>
+        <div class="data-row">
+          <span class="dc name">Rodriguez, J.M.</span>
+          <span class="dc amt">$2,650.00</span>
+          <span class="badge badge-ok">Match</span>
+        </div>
+        <div class="data-row">
+          <span class="dc name">Okafor, N.A.</span>
+          <span class="dc amt">$1,520.00</span>
+          <span class="badge badge-ok">Match</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── OFFER ── -->
+<section class="sec" id="offer">
+  <div class="wrap">
+    <h2 class="sec-title">What working with me looks like.</h2>
+    <div class="offer-grid">
+      <div class="offer-col">
+        <div class="offer-title">Custom built.</div>
+        <p class="offer-body">
+          I don't take an existing product and configure it for you. I build the software
+          from scratch to match how your firm actually works — your documents, your naming
+          conventions, your review process.
+        </p>
+        <div class="offer-foot">No templates · Built for your workflow</div>
+      </div>
+      <div class="offer-col">
+        <div class="offer-title">Designed to last.</div>
+        <p class="offer-body">
+          Software that fits your process needs to stay current as your process changes. When
+          providers update their formats, when new edge cases appear, I update it — without
+          a new project quote, without a change order.
+        </p>
+        <div class="offer-foot">Ongoing relationship · No project fees</div>
+      </div>
+      <div class="offer-col">
+        <div class="offer-title">Hands off.</div>
+        <p class="offer-body">
+          You run it. I keep it running. Once the software is deployed, your team uses it
+          without needing to think about what's underneath. When something changes — a new
+          document format, a new provider — I update it.
+        </p>
+        <div class="offer-foot">You use it · I maintain it</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── WHO ── -->
+<section class="sec" id="who">
+  <div class="wrap">
+    <h2 class="sec-title">Who this is for.</h2>
+    <div class="who-grid">
+      <div class="who-quote">
+        "You run a small CPA firm. The work is real, the margin is thin, and you're tired
+        of the parts that should be automated by now."
+      </div>
+      <ul class="who-list" role="list">
+        <li>Small firm, 2–15 people — not a regional or national practice</li>
+        <li>High-volume document work: statements, reconciliations, filings that move through your desk on repeat</li>
+        <li>You don't need to understand AI. You need a partner who does.</li>
+        <li>You're serious about building an operational advantage — not just experimenting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── APPLY ── -->
+<section class="apply-sec" id="apply">
+  <div class="wrap">
+    <div class="apply-inner">
+      <span class="apply-status">Let's talk</span>
+      <h2 class="apply-h2">Ready to automate the work your team does on repeat?</h2>
+      <p class="apply-p">
+        The fastest way to get started is a phone call. I keep my calendar light
+        so we can connect this week — no intake form, no automated reply, no runaround.
+      </p>
+      <div class="contact-big">
+        <a href="tel:+14709352672" class="contact-phone">(470) 935-2672</a>
+        <p class="contact-nudge">Call or text — I'll pick up.</p>
+      </div>
+      <p class="apply-contact">
+        <a href="mailto:info@localforge.tech">info@localforge.tech</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span class="footer-brand">LocalForge</span>
+      <div class="footer-contact">
+        <a href="mailto:info@localforge.tech">info@localforge.tech</a>
+        <a href="tel:+14709352672">(470) 935-2672</a>
+        <span>Custom AI software for accounting firms</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── DEMO MODAL ── -->
+<div class="mz-modal" id="mzModal" hidden role="dialog" aria-label="Meridian Zero Live Demo" aria-modal="true">
+  <div class="mz-backdrop" id="mzClose"></div>
+  <div class="mz-frame">
+    <button class="mz-close" id="mzCloseBtn" aria-label="Close demo" type="button">&#x2715;</button>
+    <iframe class="mz-iframe" id="mzIframe" title="Meridian Zero — Live Demo"></iframe>
+  </div>
+</div>
+
+<!-- ── MERIDIAN ZERO HTML (stored as textarea text to avoid parsing) ── -->
+<textarea hidden id="mzSrc" aria-hidden="true"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Meridian Zero — Retirement Plan Reconciliation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --c0:#0A0A0A;--c1:#111111;--c2:#191919;--c3:#222222;--c4:#2C2C2C;--c5:#363636;
+  --o0:#B84D14;--o1:#E8621A;--o2:#FF7A35;--o3:#FFB085;--o-dim:rgba(232,98,26,.1);--o-glow:rgba(232,98,26,.22);
+  --g1:#C9A84C;--g2:#E8C96E;--g-dim:rgba(201,168,76,.08);
+  --t0:#F2F2EE;--t1:#C4C4BC;--t2:#888884;--t3:#4A4A46;
+  --b1:rgba(255,255,255,.04);--b2:rgba(255,255,255,.08);--b3:rgba(255,255,255,.13);
+  --carbon-bg:#111111;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.032;mix-blend-mode:overlay;
+}
+body{background:var(--c1);color:var(--t0);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.w{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.band{padding:88px 0}
+.band-dark{background:var(--c0)}
+.cf{
+  background-color:var(--carbon-bg);
+  background-image:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 50%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 50%);
+  background-size:5px 5px;
+}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;text-wrap:balance}
+.eyebrow{font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--o1);display:block;margin-bottom:12px}
+.g-eyebrow{font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g1);display:block;margin-bottom:12px}
+.sec-title{font-size:clamp(1.9rem,3.8vw,2.75rem);font-weight:600;letter-spacing:-.015em;line-height:1.1;margin-bottom:14px}
+.sec-desc{font-size:.93rem;color:var(--t2);max-width:500px;line-height:1.78}
+.centered{text-align:center}.centered .sec-desc{margin:0 auto}
+.o-rule{display:block;width:32px;height:2px;background:linear-gradient(90deg,var(--o1),var(--o2));margin-bottom:22px}
+.oc{margin:0 auto 22px}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--b2)}
+.nav-i{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{display:flex;align-items:center;gap:9px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:var(--t0);text-decoration:none}
+.lm{width:30px;height:30px;background:linear-gradient(135deg,var(--o0),var(--o1));border-radius:7px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px var(--o-glow);flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-tag{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);border:1px solid var(--b3);padding:4px 12px;border-radius:20px}
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.02em;padding:9px 20px;border-radius:6px;text-decoration:none;border:none;cursor:pointer;transition:all .14s}
+.btn-o{background:linear-gradient(135deg,var(--o0),var(--o1));color:#fff;box-shadow:0 4px 18px rgba(232,98,26,.28)}
+.btn-o:hover{box-shadow:0 6px 28px rgba(232,98,26,.45);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--t1);border:1px solid var(--b3)}
+.btn-ghost:hover{background:var(--b1);color:var(--t0)}
+.hero{padding:96px 0 76px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-160px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(232,98,26,.09) 0%,transparent 68%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:.67rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--g1);padding:6px 14px;border:1px solid rgba(201,168,76,.2);border-left:2px solid var(--g1);background:var(--g-dim);border-radius:0 4px 4px 0;margin-bottom:26px}
+h1.hero-h{font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:700;letter-spacing:-.022em;line-height:1.05;max-width:760px;margin-bottom:22px}
+h1.hero-h em{font-style:italic;color:var(--o1)}
+.hero-sub{font-size:1rem;color:var(--t2);max-width:510px;line-height:1.78;margin-bottom:40px}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:58px}
+.flow{display:flex;align-items:stretch;background:rgba(0,0,0,.28);border:1px solid var(--b2);border-radius:10px;overflow:hidden;box-shadow:0 1px 0 var(--b3) inset}
+.fn{flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;padding:22px 16px}
+.fn+.fn{border-left:1px solid var(--b2)}
+.fn-ico{width:50px;height:50px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+.fi-pdf{background:var(--g-dim);color:var(--g1);border:1px solid rgba(201,168,76,.14)}
+.fi-ai{background:var(--o-dim);color:var(--o2);border:1px solid rgba(232,98,26,.18);box-shadow:0 0 16px rgba(232,98,26,.12)}
+.fi-xl{background:rgba(74,222,128,.06);color:#4ade80;border:1px solid rgba(74,222,128,.14)}
+.fn-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.8rem;color:var(--t0);letter-spacing:.01em}
+.fn-hint{font-size:.69rem;color:var(--t3)}
+.flow-arr{display:flex;align-items:center;justify-content:center;padding:0 10px;color:var(--o1);opacity:.55;font-size:.9rem;flex-shrink:0}
+.stats{background:var(--c0);border-top:1px solid var(--b2);border-bottom:1px solid var(--b2);padding:36px 0}
+.stats-g{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:16px}
+.stat+.stat{border-left:1px solid var(--b2)}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--o1),var(--o3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:3px}
+.stat-l{font-size:.71rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--t3)}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.prob-copy .sec-title{max-width:360px}
+.prob-copy p{font-size:.9rem;color:var(--t2);line-height:1.75;margin-top:14px}
+.prob-copy ul{margin-top:18px;display:flex;flex-direction:column;gap:8px;list-style:none}
+.prob-copy li{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--t2)}
+.prob-copy li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--o1);flex-shrink:0;margin-top:7px}
+.err-card{background:var(--c2);border:1px solid var(--b2);border-radius:10px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.err-hdr{background:var(--c3);border-bottom:1px solid var(--b2);padding:11px 16px;display:flex;align-items:center;justify-content:space-between}
+.err-ttl{font-size:.76rem;font-weight:600;color:var(--t1);letter-spacing:.02em}
+.err-badge{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f87171;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:3px 8px;border-radius:4px}
+.err-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.err-table th{background:rgba(0,0,0,.2);text-align:left;padding:8px 14px;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);border-bottom:1px solid var(--b2)}
+.err-table td{padding:9px 14px;border-bottom:1px solid var(--b1);color:var(--t2);font-variant-numeric:tabular-nums}
+.err-table tr:last-child td{border-bottom:none}
+.td-name{color:var(--t0)!important;font-weight:500}
+.td-ok{color:#4ade80!important}
+.td-err{color:#f87171!important;font-weight:600}
+.td-warn{color:var(--o3)!important}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.step{background:var(--c2);border:1px solid var(--b2);border-top:2px solid var(--o1);border-radius:0 0 10px 10px;padding:26px 22px;transition:box-shadow .2s}
+.step:hover{box-shadow:0 0 28px rgba(232,98,26,.08)}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:rgba(232,98,26,.12);line-height:1;margin-bottom:12px;display:block}
+.step h3{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;margin-bottom:9px;color:var(--t0)}
+.step p{font-size:.82rem;color:var(--t2);line-height:1.65}
+.db-wrap{max-width:680px;margin:52px auto 0}
+.db{background:var(--c2);border:1px solid var(--b2);border-radius:11px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.db-hdr{background:var(--c3);border-bottom:1px solid var(--b2);padding:13px 18px;display:flex;align-items:center;justify-content:space-between}
+.db-ttl{font-size:.8rem;font-weight:600;color:var(--t1)}
+.db-badge{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.18);padding:3px 9px;border-radius:20px}
+.db-meta{background:rgba(0,0,0,.2);border-bottom:1px solid var(--b2);padding:9px 18px;display:flex;gap:24px}
+.db-meta-i{font-size:.72rem;color:var(--t3)}.db-meta-i span{color:var(--t1);font-weight:500;margin-left:4px}
+.db-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.db-table th{background:rgba(0,0,0,.15);text-align:left;padding:9px 14px;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);border-bottom:1px solid var(--b2)}
+.db-table td{padding:10px 14px;border-bottom:1px solid var(--b1);color:var(--t1);font-variant-numeric:tabular-nums}
+.db-table tr:last-child td{border-bottom:none}
+.db-table tr:hover td{background:rgba(255,255,255,.015)}
+.td-p{color:var(--t0)!important;font-weight:500}
+.td-chk{color:#4ade80!important;font-weight:700;font-size:.72rem}
+.db-foot{background:var(--c3);border-top:1px solid var(--b2);padding:10px 18px;display:flex;align-items:center;justify-content:space-between}
+.db-foot-l{font-size:.7rem;color:var(--t3);letter-spacing:.07em;text-transform:uppercase}
+.db-foot-v{font-size:.82rem;font-weight:600;color:#4ade80;font-variant-numeric:tabular-nums}
+.demo-layout{display:grid;grid-template-columns:1fr 1.08fr;gap:52px;align-items:start}
+.demo-copy p{font-size:.88rem;color:var(--t2);line-height:1.75;margin-top:12px}
+.demo-tip{margin-top:20px;padding:13px 16px;background:var(--o-dim);border-radius:6px;border-left:2px solid var(--o1);font-size:.8rem;color:var(--o3);font-weight:500}
+.chat-win{background:var(--c2);border:1px solid var(--b2);border-radius:11px;overflow:hidden;box-shadow:0 14px 44px rgba(0,0,0,.35);display:flex;flex-direction:column}
+.chat-hdr{background:var(--c3);border-bottom:1px solid var(--b2);padding:13px 16px;display:flex;align-items:center;gap:10px}
+.chat-dot{width:8px;height:8px;border-radius:50%;background:var(--o1);box-shadow:0 0 0 3px var(--o-dim);animation:cpulse 2s ease-in-out infinite}
+@keyframes cpulse{0%,100%{box-shadow:0 0 0 3px var(--o-dim)}50%{box-shadow:0 0 0 7px rgba(232,98,26,.04)}}
+.chat-ttl{font-weight:600;font-size:.86rem;color:var(--t0)}
+.chat-sub{font-size:.68rem;color:var(--t3)}
+.chat-body{flex:1;padding:14px;display:flex;flex-direction:column;gap:9px;overflow-y:auto;max-height:290px}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:3px}
+.msg.bot{align-self:flex-start}.msg.user{align-self:flex-end}
+.bubble{padding:9px 13px;border-radius:10px;font-size:.82rem;line-height:1.5}
+.msg.bot .bubble{background:var(--c3);border:1px solid var(--b2);color:var(--t1);border-bottom-left-radius:3px}
+.msg.user .bubble{background:linear-gradient(135deg,var(--o0),var(--o1));color:#fff;border-bottom-right-radius:3px}
+.sender{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.msg.bot .sender{color:var(--t3);padding-left:3px}
+.msg.user .sender{color:var(--t3);text-align:right;padding-right:3px}
+.chat-opts{padding:11px 14px;border-top:1px solid var(--b2);display:flex;flex-wrap:wrap;gap:7px;background:rgba(0,0,0,.18);align-items:center;min-height:50px}
+.opt{background:var(--c3);border:1px solid var(--b3);color:var(--t1);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;padding:6px 15px;border-radius:20px;cursor:pointer;transition:all .12s}
+.opt:hover{background:var(--o-dim);border-color:rgba(232,98,26,.35);color:var(--o2)}
+.opt:disabled{opacity:.3;cursor:default}
+.demo-rst{font-size:.68rem;color:var(--t3);background:none;border:none;cursor:pointer;text-decoration:underline;margin-left:auto;transition:color .1s}
+.demo-rst:hover{color:var(--t2)}
+.done-card{margin:3px 0;background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.18);border-radius:8px;padding:11px 13px;font-size:.78rem;color:#4ade80;line-height:1.6}
+.done-card strong{display:block;margin-bottom:4px;font-size:.66rem;letter-spacing:.09em;text-transform:uppercase}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:46px}
+.path-card{background:var(--c2);border:1px solid var(--b2);border-radius:10px;overflow:hidden}
+.path-hdr{padding:14px 20px;border-bottom:1px solid var(--b2);background:var(--c3);display:flex;align-items:center;gap:10px}
+.ptag{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.ptag-o{background:var(--o-dim);color:var(--o2);border:1px solid rgba(232,98,26,.18)}
+.ptag-g{background:var(--g-dim);color:var(--g1);border:1px solid rgba(201,168,76,.18)}
+.path-hdr h3{font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;color:var(--t0)}
+.p-rows{padding:0 20px}
+.p-row{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--b1);font-size:.81rem}
+.p-row:last-child{border-bottom:none}
+.p-lbl{color:var(--t3);flex:0 0 95px;font-size:.75rem}
+.p-val{color:var(--t1);font-weight:500;flex:1;line-height:1.38}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:46px}
+.cap{background:var(--c2);border:1px solid var(--b2);border-radius:10px;padding:22px;transition:border-color .18s}
+.cap:hover{border-color:rgba(232,98,26,.28)}
+.cap-ico{width:36px;height:36px;background:var(--o-dim);border:1px solid rgba(232,98,26,.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-bottom:13px}
+.cap h4{font-family:'DM Sans',sans-serif;font-size:.87rem;font-weight:600;margin-bottom:7px;color:var(--t0)}
+.cap p{font-size:.79rem;color:var(--t2);line-height:1.6}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:46px}
+.chk{display:flex;align-items:flex-start;gap:9px;background:var(--c2);border:1px solid var(--b2);border-radius:7px;padding:11px 13px;font-size:.8rem;color:var(--t2);line-height:1.42}
+.chk-m{width:17px;height:17px;flex-shrink:0;border-radius:50%;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.22);color:#4ade80;font-size:.55rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.price-wrap{max-width:540px;margin:52px auto 0}
+.price-card{background:var(--c2);border-radius:13px;overflow:hidden;box-shadow:0 0 0 1px rgba(232,98,26,.14),0 24px 64px rgba(0,0,0,.45);position:relative}
+.price-card::before{content:'';position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,var(--o0),var(--o1),var(--o2))}
+.price-hdr{padding:38px 42px 30px;text-align:center;background-color:var(--carbon-bg);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 50%),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 50%);background-size:5px 5px;border-bottom:1px solid var(--b2)}
+.price-label{font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g1);display:block;margin-bottom:16px}
+.price-amt{font-family:'Cormorant Garamond',serif;font-size:4.2rem;font-weight:700;letter-spacing:-.03em;color:var(--t0);line-height:1;display:block;margin-bottom:6px}
+.price-amt sup{font-size:1.8rem;vertical-align:top;margin-top:.6rem;display:inline-block;color:var(--o1)}
+.price-cad{font-size:.75rem;color:var(--t3);letter-spacing:.1em;text-transform:uppercase}
+.price-body{padding:30px 42px 36px}
+.price-tagline{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--t2);margin-bottom:22px;line-height:1.5}
+.price-items{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.price-items li{display:flex;align-items:flex-start;gap:9px;font-size:.86rem;color:var(--t1);line-height:1.45}
+.price-items li::before{content:'&#x2192;';color:var(--o1);flex-shrink:0;font-size:.82rem;margin-top:2px}
+.price-roi{background:var(--g-dim);border:1px solid rgba(201,168,76,.15);border-radius:7px;padding:13px 16px;margin-bottom:24px;font-size:.8rem;color:var(--g2);line-height:1.55}
+.price-roi strong{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g1);margin-bottom:4px}
+.btn-price{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,var(--o0),var(--o1));color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.02em;padding:14px 24px;border-radius:7px;border:none;cursor:pointer;box-shadow:0 4px 22px rgba(232,98,26,.28);transition:all .14s;text-decoration:none}
+.btn-price:hover{box-shadow:0 8px 32px rgba(232,98,26,.44);transform:translateY(-1px)}
+.price-note{text-align:center;margin-top:13px;font-size:.73rem;color:var(--t3)}
+.cta-box{background-color:var(--carbon-bg);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 50%),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 50%);background-size:5px 5px;border-radius:13px;padding:72px 48px;text-align:center;border:1px solid var(--b2);position:relative;overflow:hidden}
+.cta-box::before{content:'0';position:absolute;right:-30px;top:-50px;font-family:'Cormorant Garamond',serif;font-size:280px;font-weight:700;color:rgba(232,98,26,.05);line-height:1;pointer-events:none}
+.cta-box h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;letter-spacing:-.015em;margin-bottom:14px}
+.cta-box p{font-size:.95rem;color:var(--t2);max-width:410px;margin:0 auto 32px;line-height:1.72}
+footer{border-top:1px solid var(--b2);background:var(--c0);padding:26px 0}
+.foot-i{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.foot-copy{font-size:.76rem;color:var(--t3)}
+.zero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.18);color:#4ade80;font-size:.67rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:4px 11px;border-radius:20px}
+@media(max-width:820px){
+  .stats-g{grid-template-columns:repeat(2,1fr)}
+  .stat+.stat:nth-child(3){border-left:none;border-top:1px solid var(--b2)}
+  .prob-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .demo-layout{grid-template-columns:1fr}
+  .paths{grid-template-columns:1fr}
+  .caps{grid-template-columns:repeat(2,1fr)}
+  .checks{grid-template-columns:1fr}
+  .band{padding:64px 0}
+  .hero{padding:72px 0 56px}
+  .cta-box{padding:48px 24px}
+  .price-hdr,.price-body{padding-left:26px;padding-right:26px}
+}
+@media(max-width:500px){
+  .caps{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .fn+.fn{border-left:none;border-top:1px solid var(--b2)}
+  h1.hero-h{font-size:2.3rem}
+  .nav-tag{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="w nav-i">
+    <a href="#" class="logo">
+      <div class="lm">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1.5"/>
+          <line x1="8" y1="3.5" x2="8" y2="12.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="3.5" y1="8" x2="12.5" y2="8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      Meridian Zero
+    </a>
+    <div class="nav-right">
+      <span class="nav-tag">Enterprise AI</span>
+      <a href="#demo" class="btn btn-o">See it live</a>
+    </div>
+  </div>
+</nav>
+<section class="hero cf">
+  <div class="w">
+    <div class="hero-badge">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="2" x2="5" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="2" y1="5" x2="8" y2="5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Retirement Plan Automation &#xB7; Enterprise Grade
+    </div>
+    <h1 class="hero-h">PDF to Excel.<br>Every participant.<br><em>Check&nbsp;=&nbsp;0.</em></h1>
+    <p class="hero-sub">Meridian Zero reads your Empower and John Hancock plan statement PDFs and reconciles every participant into your pre-formatted workbook &#x2014; automatically, precisely, and completely. No manual entry. No variance. No error.</p>
+    <div class="btn-row">
+      <a href="#demo" class="btn btn-o">Walk through a live plan &#x2193;</a>
+      <a href="#how" class="btn btn-ghost">How it works</a>
+    </div>
+    <div class="flow">
+      <div class="fn">
+        <div class="fn-ico fi-pdf">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="12" height="17" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M10 2V8H16" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><line x1="7" y1="12" x2="13" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="7" y1="15" x2="11" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="fn-name">Plan Statement PDF</div>
+        <div class="fn-hint">Empower &#xB7; John Hancock</div>
+      </div>
+      <div class="flow-arr">&#x2192;</div>
+      <div class="fn">
+        <div class="fn-ico fi-ai">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 5.5V7M12 3.5V7M16 5.5V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="13" r="1.2" fill="currentColor"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><circle cx="16" cy="13" r="1.2" fill="currentColor"/><line x1="8" y1="16" x2="16" y2="16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="fn-name">Meridian Zero AI</div>
+        <div class="fn-hint">Label-driven extraction</div>
+      </div>
+      <div class="flow-arr">&#x2192;</div>
+      <div class="fn">
+        <div class="fn-ico fi-xl">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.4"/><line x1="2" y1="9" x2="22" y2="9" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="16" x2="22" y2="16" stroke="currentColor" stroke-width="1.2"/><line x1="10" y1="2" x2="10" y2="22" stroke="currentColor" stroke-width="1.2"/></svg>
+        </div>
+        <div class="fn-name">Combined Statement</div>
+        <div class="fn-hint">Formulas intact &#xB7; Check = 0</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stats">
+  <div class="w">
+    <div class="stats-g">
+      <div class="stat"><span class="stat-n">100%</span><div class="stat-l">Reconciliation accuracy</div></div>
+      <div class="stat"><span class="stat-n">8&#x2013;12h</span><div class="stat-l">Saved per plan statement</div></div>
+      <div class="stat"><span class="stat-n">$0.00</span><div class="stat-l">Check row &#x2014; every time</div></div>
+      <div class="stat"><span class="stat-n">2</span><div class="stat-l">Brokerages supported</div></div>
+    </div>
+  </div>
+</div>
+<section class="band">
+  <div class="w">
+    <div class="prob-grid">
+      <div class="prob-copy">
+        <span class="eyebrow">The Problem</span>
+        <h2 class="sec-title">Manual reconciliation is costing you time and trust.</h2>
+        <p>Every month your team opens a PDF, reads balances, and types numbers into Excel. One transposed digit, one missed participant, one wrong column &#x2014; and your check row doesn&#x2019;t zero.</p>
+        <ul>
+          <li>Average 8&#x2013;12 hours per plan statement on data entry</li>
+          <li>Transposition errors caught only after delivery</li>
+          <li>Participants missed entirely when pages are added mid-year</li>
+          <li>No audit trail from PDF value to Excel cell</li>
+        </ul>
+      </div>
+      <div>
+        <div class="err-card">
+          <div class="err-hdr">
+            <span class="err-ttl">Harrington Capital 401(k) &#x2014; Manual Entry Q3 2026</span>
+            <span class="err-badge">3 Errors Found</span>
+          </div>
+          <table class="err-table">
+            <thead><tr><th>Participant</th><th>PDF Balance</th><th>Excel Balance</th><th>Variance</th></tr></thead>
+            <tbody>
+              <tr><td class="td-name">J. Harrington</td><td>$148,320.15</td><td>$148,021.15</td><td class="td-err">&#x2212;$299.00</td></tr>
+              <tr><td class="td-name">S. Bellwood</td><td>$89,445.00</td><td>$89,445.00</td><td class="td-ok">$0.00 &#x2713;</td></tr>
+              <tr><td class="td-name">R. Chen</td><td>$212,780.90</td><td>$212,880.90</td><td class="td-warn">+$100.00</td></tr>
+              <tr><td class="td-name">M. Santos</td><td>$54,210.00</td><td>$54,210.00</td><td class="td-ok">$0.00 &#x2713;</td></tr>
+              <tr><td class="td-name">D. Park</td><td>$178,900.45</td><td>$0.00</td><td class="td-err">&#x2212;$178,900.45</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.73rem;color:var(--t3);margin-top:10px;text-align:center">&#x2191; Representative mock data &#x2014; errors typical of manual entry workflow</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="band band-dark" id="how">
+  <div class="w">
+    <div class="centered">
+      <span class="eyebrow">The Process</span>
+      <h2 class="sec-title">Three stages. Identical every time.</h2>
+      <p class="sec-desc">Whether it&#x2019;s five participants or fifty, Empower or John Hancock &#x2014; the same protocol runs in the same order, with the same precision.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">01</span>
+        <h3>Intake &amp; Protocol</h3>
+        <p>Five required questions run before any file is touched &#x2014; brokerage, profit sharing label, Safe Harbor type, corrections, and participant count. No defaults. No silent assumptions.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <h3>Label-Driven Extraction</h3>
+        <p>Every value is located by its row label in Column A &#x2014; never by a hardcoded row number. The same logic handles any participant count or workbook layout, on any plan, every month.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <h3>Validation &amp; Delivery</h3>
+        <p>After all data is placed, every participant&#x2019;s check formula is verified. Any non-zero result is reported by name with a description. The file is not delivered until Check = 0.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="band">
+  <div class="w">
+    <div class="centered">
+      <span class="g-eyebrow">Live Output Preview</span>
+      <h2 class="sec-title">What your combined statement looks like after Meridian runs</h2>
+      <p class="sec-desc">Every participant reconciled. Every formula intact. Every check row zeroed.</p>
+    </div>
+    <div class="db-wrap">
+      <div class="db">
+        <div class="db-hdr">
+          <span class="db-ttl">Harrington Capital 401(k) &#x2014; Combined Statement Q3 2026</span>
+          <span class="db-badge">Reconciled &#x2713;</span>
+        </div>
+        <div class="db-meta">
+          <span class="db-meta-i">Brokerage:<span>Empower</span></span>
+          <span class="db-meta-i">Period:<span>Jul 1 &#x2013; Sep 30, 2026</span></span>
+          <span class="db-meta-i">Participants:<span>5</span></span>
+        </div>
+        <table class="db-table">
+          <thead><tr><th>Participant</th><th>Beginning</th><th>Contributions</th><th>Gain / Loss</th><th>Ending Balance</th><th>Check</th></tr></thead>
+          <tbody>
+            <tr><td class="td-p">Harrington, James T.</td><td>$142,100.00</td><td>$4,800.00</td><td>$1,420.15</td><td>$148,320.15</td><td class="td-chk">$0.00 &#x2713;</td></tr>
+            <tr><td class="td-p">Bellwood, Susan M.</td><td>$85,200.00</td><td>$3,200.00</td><td>$1,045.00</td><td>$89,445.00</td><td class="td-chk">$0.00 &#x2713;</td></tr>
+            <tr><td class="td-p">Chen, Robert K.</td><td>$204,500.00</td><td>$6,400.00</td><td>$1,880.90</td><td>$212,780.90</td><td class="td-chk">$0.00 &#x2713;</td></tr>
+            <tr><td class="td-p">Santos, Maria E.</td><td>$51,800.00</td><td>$2,000.00</td><td>$410.00</td><td>$54,210.00</td><td class="td-chk">$0.00 &#x2713;</td></tr>
+            <tr><td class="td-p">Park, David J.</td><td>$170,200.00</td><td>$6,400.00</td><td>$2,300.45</td><td>$178,900.45</td><td class="td-chk">$0.00 &#x2713;</td></tr>
+          </tbody>
+        </table>
+        <div class="db-foot">
+          <span class="db-foot-l">Plan Total &#x2014; All Participants</span>
+          <span class="db-foot-v">$683,656.50 &#xB7; Check = $0.00 &#x2713;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="band band-dark" id="demo">
+  <div class="w">
+    <div class="demo-layout">
+      <div class="demo-copy">
+        <span class="eyebrow">Startup Protocol</span>
+        <h2 class="sec-title">Five questions. Then Meridian handles everything.</h2>
+        <p>Before a single cell is touched, Meridian runs through a mandatory intake. It confirms the brokerage, profit sharing configuration, corrections, and Safe Harbor type &#x2014; because one wrong assumption propagates to every participant.</p>
+        <p>This isn&#x2019;t a form. It&#x2019;s a structured protocol that runs identically every month, on every plan, regardless of who is at the keyboard.</p>
+        <div class="demo-tip">&#x2193; Click the options below to walk through a live plan intake for Harrington Capital.</div>
+      </div>
+      <div>
+        <div class="chat-win">
+          <div class="chat-hdr">
+            <div class="chat-dot"></div>
+            <div>
+              <div class="chat-ttl">Meridian Zero</div>
+              <div class="chat-sub">Plan Reconciliation Assistant &#xB7; Active</div>
+            </div>
+          </div>
+          <div class="chat-body" id="chatBody"></div>
+          <div class="chat-opts" id="chatOpts"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="band">
+  <div class="w">
+    <div class="centered">
+      <span class="eyebrow">Brokerage Support</span>
+      <h2 class="sec-title">Two platforms. Two distinct extraction paths.</h2>
+      <p class="sec-desc">Empower and John Hancock structure their statements differently. Meridian identifies the brokerage at intake and applies the correct logic.</p>
+    </div>
+    <div class="paths">
+      <div class="path-card">
+        <div class="path-hdr"><span class="ptag ptag-o">Empower</span><h3>Section header extraction</h3></div>
+        <div class="p-rows">
+          <div class="p-row"><span class="p-lbl">Contributions</span><span class="p-val">Section header row total &#x2014; fund detail rows are ignored entirely</span></div>
+          <div class="p-row"><span class="p-lbl">Gain / Loss</span><span class="p-val">TOTAL ALL MONEY TYPES &#x2192; Change in Value column</span></div>
+          <div class="p-row"><span class="p-lbl">Ending Balance</span><span class="p-val">TOTAL ALL MONEY TYPES &#x2192; Ending Balance &#x2014; cross-checked against page total</span></div>
+        </div>
+      </div>
+      <div class="path-card">
+        <div class="path-hdr"><span class="ptag ptag-g">John Hancock</span><h3>Participant row extraction</h3></div>
+        <div class="p-rows">
+          <div class="p-row"><span class="p-lbl">Contributions</span><span class="p-val">EE Deferral / Roth / SHNE pulled from participant section header</span></div>
+          <div class="p-row"><span class="p-lbl">Gain / Loss</span><span class="p-val">PRT TOTAL Gain/Loss minus the combined Gain/Loss of all LOAN SA lines</span></div>
+          <div class="p-row"><span class="p-lbl">Ending Balance</span><span class="p-val">PRT TOTAL far-right column &#x2192; JH Investments row</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="band band-dark">
+  <div class="w">
+    <div class="centered">
+      <span class="eyebrow">Full Capability Set</span>
+      <h2 class="sec-title">Every scenario, handled.</h2>
+      <p class="sec-desc">New joiners, departures, loans, corrections, profit sharing, rollovers &#x2014; Meridian handles the full lifecycle of a 401(k) plan.</p>
+    </div>
+    <div class="caps">
+      <div class="cap"><div class="cap-ico">&#x1F464;</div><h4>New Participants</h4><p>Inserted alphabetically by last name. Every cell populated, formulas matched from adjacent columns, and all SUM ranges updated.</p></div>
+      <div class="cap"><div class="cap-ico">&#x1F6AA;</div><h4>Departed Participants</h4><p>A $0.00 beginning balance signals departure. The column is removed and totals are updated automatically.</p></div>
+      <div class="cap"><div class="cap-ico">&#x1F3E6;</div><h4>Participant Loans</h4><p>Full four-step processing: Participant Loan box, JH Funds adjustment, Loan Interest, and Loans tab updated for every active loan.</p></div>
+      <div class="cap"><div class="cap-ico">&#x1F4CB;</div><h4>Corrections Documents</h4><p>Correction values are subtracted from Safe Harbor Match or SHNE &#x2014; whichever the plan uses. Applied to exactly one field.</p></div>
+      <div class="cap"><div class="cap-ico">&#x26A0;&#xFE0F;</div><h4>Rollover Flagging</h4><p>Rollovers are never processed automatically. The participant name, page, and amount are reported while all others continue.</p></div>
+      <div class="cap"><div class="cap-ico">&#x1F4C8;</div><h4>Profit Sharing</h4><p>Labels vary by plan. Meridian confirms the correct abbreviation at intake every time &#x2014; the question is always required.</p></div>
+    </div>
+  </div>
+</div>
+<section class="band">
+  <div class="w">
+    <div class="centered">
+      <span class="g-eyebrow">Pre-Delivery Validation</span>
+      <h2 class="sec-title">Ten checks. Every plan. No exceptions.</h2>
+      <p class="sec-desc">Before the file is saved, a structured checklist runs automatically. Any failure is reported by participant name with a description.</p>
+    </div>
+    <div class="checks">
+      <div class="chk"><div class="chk-m">&#x2713;</div>All participant ending balances match the PDF and the Excel totals</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>Plan Totals ending balance matches the PDF grand total exactly</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>Check row = $0.00 for every participant (Total Assets &#x2212; Ending Balance)</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>No formula errors: #REF!, #DIV/0!, #VALUE!, or #NAME? anywhere in the file</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>All SUM ranges updated after any column additions or removals</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>Formatting identical to original &#x2014; font, fill, borders, and column widths</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>Rate of return cell colors correct (exact workbook green and red values)</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>All rollovers flagged and reported &#x2014; none auto-processed</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>Corrections applied to the correct single field only, not duplicated</div>
+      <div class="chk"><div class="chk-m">&#x2713;</div>Loans tab fully populated for all participants with active loan balances</div>
+    </div>
+  </div>
+</section>
+<div class="band cf">
+  <div class="w">
+    <div class="centered">
+      <span class="g-eyebrow">Licensing</span>
+      <h2 class="sec-title">One investment. Permanent precision.</h2>
+      <p class="sec-desc">Meridian Zero is priced as a one-time enterprise implementation &#x2014; not a subscription. Pay once, run every plan, every month.</p>
+    </div>
+    <div class="price-wrap">
+      <div class="price-card">
+        <div class="price-hdr">
+          <span class="price-label">Enterprise License &#x2014; One Time</span>
+          <span class="price-amt"><sup>$</sup>5,000</span>
+          <span class="price-cad">One-time implementation fee</span>
+        </div>
+        <div class="price-body">
+          <p class="price-tagline">&#x201C;Eight hours of manual work, replaced by eight minutes of protocol.&#x201D;</p>
+          <ul class="price-items">
+            <li>Full Meridian Zero AI configuration for your specific plan workbooks</li>
+            <li>Empower and John Hancock extraction paths &#x2014; both included</li>
+            <li>Unlimited monthly plan statements, any participant count</li>
+            <li>New participant, departure, loan, and corrections handling</li>
+            <li>90 days of priority support and configuration refinement</li>
+            <li>Complete onboarding and team walkthrough session</li>
+          </ul>
+          <div class="price-roi">
+            <strong>Return on Investment</strong>
+            At $150/hr &#xD7; 10 hrs/plan &#xD7; 12 plans/year = <strong>$18,000/year saved</strong> &#x2014; a 260% ROI in year one alone.
+          </div>
+          <a href="#" class="btn-price">Schedule a live demonstration &#x2192;</a>
+          <p class="price-note">No subscription. No per-plan fees. No recurring costs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="band">
+  <div class="w">
+    <div class="cta-box">
+      <h2>Ready to run a plan?</h2>
+      <p>Bring your PDF and your pre-formatted workbook. Meridian asks five questions, then handles everything else &#x2014; precisely, completely, and in a fraction of the time.</p>
+      <a href="#demo" class="btn btn-o" style="margin:0 auto;display:inline-flex">Walk through the demo &#x2191;</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="w foot-i">
+    <span class="foot-copy">Meridian Zero &#x2014; Retirement Plan PDF &#x2192; Excel Reconciliation &#xB7; Enterprise AI</span>
+    <span class="zero-badge">Check = $0.00 &#x2713;</span>
+  </div>
+</footer>
+<script>
+const body=document.getElementById('chatBody'),opts=document.getElementById('chatOpts');
+let ctx={},busy=false;
+const S={
+  intro:{msgs:["I'm ready to begin. Before I open any file, I need to confirm five things about this plan with you."],delay:700,next:'brokerage'},
+  brokerage:{msgs:["Which brokerage is this plan statement from?"],options:[{label:'Empower',fn:function(c){c.b='Empower'},next:'b_ack'},{label:'John Hancock',fn:function(c){c.b='John Hancock'},next:'b_ack'}]},
+  b_ack:{msgs:[function(c){return'Got it — <strong>'+c.b+'</strong>. I\'ll apply the '+(c.b==='Empower'?'section header':'participant row')+' extraction path throughout.'}],delay:380,next:'ps'},
+  ps:{msgs:["Are we utilizing profit sharing for this plan?"],options:[{label:'Yes',fn:function(c){c.ps=true},next:'ps_label'},{label:'No',fn:function(c){c.ps=false},next:'ps_no'}]},
+  ps_label:{msgs:["What label or abbreviation does this PDF use for profit sharing?"],options:[{label:'PS',fn:function(c){c.psl='PS'},next:'ps_ack'},{label:'PROF',fn:function(c){c.psl='PROF'},next:'ps_ack'},{label:'ERProfit',fn:function(c){c.psl='ERProfit'},next:'ps_ack'}]},
+  ps_ack:{msgs:[function(c){return'Understood — I\'ll locate the <strong>'+c.psl+'</strong> source label when extracting contribution data.'}],delay:360,next:'corr'},
+  ps_no:{msgs:["Profit sharing rows will remain at zero for this plan."],delay:360,next:'corr'},
+  corr:{msgs:["Are there any corrections documents to apply alongside this statement?"],options:[{label:'Yes — apply corrections',fn:function(c){c.corr=true},next:'corr_ack'},{label:'No corrections',fn:function(c){c.corr=false},next:'sh'}]},
+  corr_ack:{msgs:["Noted. I'll subtract correction amounts from the applicable Safe Harbor or SHNE cells as I process each participant."],delay:360,next:'sh'},
+  sh:{msgs:["Does this plan use Safe Harbor Match or SHNE Contribution?"],options:[{label:'Safe Harbor Match',fn:function(c){c.sh='Safe Harbor Match'},next:'done'},{label:'SHNE Contribution',fn:function(c){c.sh='SHNE Contribution'},next:'done'}]},
+  done:{msgs:[function(c){return'Protocol confirmed. Beginning extraction for all '+c.b+' participants now.'}],isComplete:true}
+};
+function addMsg(t,h){var d=document.createElement('div');d.className='msg '+t;var s=document.createElement('div');s.className='sender';s.textContent=t==='bot'?'Meridian Zero':'You';var b=document.createElement('div');b.className='bubble';b.innerHTML=h;d.append(s,b);body.appendChild(d);body.scrollTop=body.scrollHeight}
+function clearOpts(){opts.innerHTML=''}
+function showOpts(options){clearOpts();options.forEach(function(o){var b=document.createElement('button');b.className='opt';b.textContent=o.label;b.onclick=function(){if(busy)return;opts.querySelectorAll('.opt').forEach(function(x){x.disabled=true});addMsg('user',o.label);if(o.fn)o.fn(ctx);setTimeout(function(){go(o.next)},430)};opts.appendChild(b)});var r=document.createElement('button');r.className='demo-rst';r.textContent='Reset';r.onclick=reset;opts.appendChild(r)}
+function showDone(){clearOpts();var c=document.createElement('div');c.className='done-card';c.innerHTML='<strong>Configuration Confirmed ✓</strong>Brokerage: '+ctx.b+'<br>Profit sharing: '+(ctx.ps?ctx.psl:'No')+'<br>Corrections: '+(ctx.corr?'Yes':'No')+'<br>Contribution type: '+ctx.sh;body.appendChild(c);body.scrollTop=body.scrollHeight;var r=document.createElement('button');r.className='demo-rst';r.style.cssText='display:block;margin:6px auto 2px';r.textContent='↺ Run another plan';r.onclick=reset;opts.appendChild(r)}
+function go(id){busy=true;var s=S[id];if(!s){busy=false;return}clearOpts();var t=0;s.msgs.forEach(function(m,i){setTimeout(function(){var txt=typeof m==='function'?m(ctx):m;addMsg('bot',txt);if(i===s.msgs.length-1){setTimeout(function(){busy=false;if(s.isComplete)showDone();else if(s.options)showOpts(s.options);else if(s.next)go(s.next)},s.delay||0)}},t);t+=500})}
+function reset(){ctx={};busy=false;body.innerHTML='';clearOpts();go('intro')}
+reset();
+</script>
+</body>
+</html></textarea>
+
+<script>
+/* ── NAV SCROLL ── */
+(function () {
+  var nav = document.getElementById('nav');
+  function tick() { nav.classList.toggle('is-scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', tick, { passive: true });
+  tick();
+}());
+
+/* ── MERIDIAN ZERO DEMO MODAL ── */
+(function () {
+  var modal   = document.getElementById('mzModal');
+  var iframe  = document.getElementById('mzIframe');
+  var src     = document.getElementById('mzSrc');
+  var blobUrl = null;
+
+  function openDemo(e) {
+    e.preventDefault();
+    if (!blobUrl) {
+      try {
+        var html = src.value;
+        var blob = new Blob([html], { type: 'text/html; charset=utf-8' });
+        blobUrl  = URL.createObjectURL(blob);
+      } catch (err) {
+        window.open('', '_blank');
+        return;
+      }
+    }
+    iframe.src = blobUrl;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('mzCloseBtn').focus();
+  }
+
+  function closeDemo() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    iframe.src = 'about:blank';
+  }
+
+  document.getElementById('launchMz').addEventListener('click', openDemo);
+  document.getElementById('mzClose').addEventListener('click', closeDemo);
+  document.getElementById('mzCloseBtn').addEventListener('click', closeDemo);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) closeDemo();
+  });
+}());
+</script>
