@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LocalForge | AI intake for personal-injury firms</title>
-<meta name="description" content="LocalForge builds AI intake systems for personal-injury law firms. Every web form, email and after-hours voicemail gets an accurate first reply in under five minutes.">
+<title>LocalForge | AI intake for personal injury law firms</title>
+<meta name="description" content="LocalForge builds AI intake systems for personal injury law firms. Every web form, email and after-hours voicemail gets an accurate first reply in under five minutes.">
 <meta property="og:title" content="LocalForge | Every inquiry answered in under five minutes">
-<meta property="og:description" content="AI intake for personal-injury firms. 30-day pilot with a five-minute response guarantee.">
+<meta property="og:description" content="AI intake for personal injury law firms, with a 30-day pilot and a five-minute response guarantee.">
 <meta name="theme-color" content="#F3EEF0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22r%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E2ECF6%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23EDCCD3%22/%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23F7E2CD%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2390BBCC%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%22.35%22%20cy%3D%22.3%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E9EEF5%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2213%22%20fill%3D%22url%28%23c%29%22%20stroke%3D%22url%28%23r%29%22%20stroke-width%3D%223%22/%3E%3Cellipse%20cx%3D%2211.5%22%20cy%3D%2210.5%22%20rx%3D%224%22%20ry%3D%222.4%22%20fill%3D%22%23fff%22%20opacity%3D%22.9%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,6 @@ body {
     radial-gradient(1000px 800px at 100% 70%, rgba(247, 226, 205, .55), transparent 60%),
     linear-gradient(180deg, #F1F4F9 0%, #F8F2EE 50%, #F3EEF2 100%);
   background-attachment: fixed;
-  font-feature-settings: "tnum" 1;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -183,6 +182,7 @@ section { position: relative; }
 
 .facts { margin: 56px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
 .facts div { padding-top: 18px; border-top: 1px solid rgba(29, 39, 51, .14); }
+.num, .facts dt, .tl-axis, .tag { font-variant-numeric: tabular-nums; }
 .facts dt { font-size: clamp(2rem, 3.6vw, 2.75rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1; }
 .facts dd { margin: 12px 0 0; color: var(--ink-soft); font-size: .9688rem; }
 @media (max-width: 860px) { .facts { grid-template-columns: 1fr; } }
@@ -284,12 +284,12 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
     <div id="hero-tags" class="tags" aria-hidden="true"></div>
     <div class="hero-copy">
       <h1 id="hero-title">Every inquiry answered in under five minutes.</h1>
-      <p class="lede">LocalForge builds AI intake for personal-injury firms. Web forms, emails and after-hours voicemails get an accurate, attorney-approved first reply and a booking link while the prospect is still deciding who to hire.</p>
+      <p class="lede">LocalForge builds AI intake systems for personal injury law firms. Every web form, email and after-hours voicemail gets an accurate, attorney-approved reply and a booking link while the prospect is still deciding which firm to hire.</p>
       <div class="cta-row">
         <a class="btn" href="#test">Get a free response-time test</a>
         <a class="btn btn-glass" href="#system">See how it works</a>
       </div>
-      <p class="guarantee">30-day pilot. If any inquiry waits longer than five minutes for a first reply, your setup fee comes back.</p>
+      <p class="guarantee">Try it for 30 days. If any inquiry waits more than five minutes for a first reply, we refund your setup fee.</p>
     </div>
     <p class="feed-note" aria-hidden="true">Illustration: inquiries flowing in, replies flowing out</p>
   </section>
@@ -297,21 +297,21 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
   <section id="leak" class="leak" aria-labelledby="leak-title">
     <div class="wrap">
       <h2 id="leak-title">Most firms reply tomorrow. Clients sign today.</h2>
-      <p class="section-lede">When a prospective client reaches out, they usually contact more than one firm. The first one to reply has the advantage, and right now that's rarely the firm that paid for the click.</p>
+      <p class="section-lede">When a potential client reaches out, they usually contact several firms at once. The first firm to reply has the edge, and too often it isn't the one that paid for the click.</p>
 
       <figure class="timeline glass" aria-labelledby="tl-cap">
-        <div class="tl-track" role="img" aria-label="Timeline from zero to 72 hours. LocalForge replies by minute five. In a secret-shopper study, more than half of law firms had not returned a voicemail after 72 hours.">
+        <div class="tl-track" role="img" aria-label="Timeline from zero to 72 hours. LocalForge replies by minute five. In a secret-shopper study, more than half of law firms had not returned a voicemail within 72 hours.">
           <div class="tl-axis"><span>0</span><span>12h</span><span>24h</span><span>48h</span><span>72h</span></div>
           <div class="tl-bar tl-us"><span class="tl-fill" style="--w: 1.2%"></span><span class="tl-label">LocalForge: first reply by minute 5</span></div>
-          <div class="tl-bar tl-them"><span class="tl-fill" style="--w: 100%"></span><span class="tl-label">Typical firm: more than half hadn't returned a voicemail after 72 hours</span></div>
+          <div class="tl-bar tl-them"><span class="tl-fill" style="--w: 100%"></span><span class="tl-label">Typical firms: more than half hadn't returned a voicemail within 72 hours</span></div>
         </div>
         <figcaption id="tl-cap">Source: <a href="https://www.clio.com/?p=14687" rel="noopener">Clio secret-shopper study of law firm responsiveness</a>.</figcaption>
       </figure>
 
       <dl class="facts">
         <div><dt>39%</dt><dd>of calls to law firms went to voicemail in Clio's secret-shopper study. Only about 40% of firms replied to email at all. <a href="https://www.clio.com/?p=14687" rel="noopener">Clio</a></dd></div>
-        <div><dt>$284</dt><dd>average cost per personal-injury lead across 13 firms' Google Ads and LSA spend, with about 7% of leads becoming signed cases. <a href="https://rankings.io/personal-injury-lead-costs/" rel="noopener">Rankings.io, 2026</a></dd></div>
-        <div><dt>78%</dt><dd>of consumers say they've given up on a business after a call went unanswered. <a href="https://www.callrail.com/blog/missed-calls-cost-businesses-more-than-ever" rel="noopener">CallRail, 2025</a></dd></div>
+        <div><dt>$284</dt><dd>average cost per personal injury lead, based on 13 firms' spending on Google Ads and Local Services Ads. About 7% of those leads became signed cases. <a href="https://rankings.io/personal-injury-lead-costs/" rel="noopener">Rankings.io, 2026</a></dd></div>
+        <div><dt>78%</dt><dd>of consumers have given up on a business after a call went unanswered. <a href="https://www.callrail.com/blog/missed-calls-cost-businesses-more-than-ever" rel="noopener">CallRail, 2025</a></dd></div>
       </dl>
     </div>
   </section>
@@ -322,12 +322,12 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
     </div>
     <div class="system-copy">
       <h2 id="system-title">How the 5-Minute Intake System works</h2>
-      <p class="section-lede">Four layers sit between your website and your calendar. Each inquiry passes through all four in minutes, day or night.</p>
+      <p class="section-lede">Four layers sit between your website and your calendar. Every inquiry moves through all four in minutes, day or night.</p>
       <ol class="steps">
         <li data-step="0"><h3>Capture</h3><p>Web forms, intake emails and after-hours voicemails land in one queue. Voicemails are transcribed the moment they're left.</p></li>
-        <li data-step="1"><h3>Classify</h3><p>Each inquiry is sorted by case type, urgency and location, and anything that needs a human right away is flagged.</p></li>
-        <li data-step="2"><h3>Reply</h3><p>A personal first reply goes out from your firm's address, built from templates your attorneys approved. It never gives legal advice.</p></li>
-        <li data-step="3"><h3>Book</h3><p>The reply carries a link to your consult calendar. Prospects who don't book get two short follow-ups, and you get a monthly report on response times.</p></li>
+        <li data-step="1"><h3>Classify</h3><p>Each inquiry is sorted by case type, urgency and location. Anything that needs a person right away gets flagged.</p></li>
+        <li data-step="2"><h3>Reply</h3><p>A personal first reply goes out from your firm's email address, built from templates your attorneys have approved. It never gives legal advice.</p></li>
+        <li data-step="3"><h3>Book</h3><p>Every reply includes a link to your consultation calendar. Prospects who don't book get two short follow-ups, and you get a monthly report on response times.</p></li>
       </ol>
     </div>
   </section>
@@ -336,23 +336,23 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
     <div class="wrap offer-grid">
       <div>
         <h2 id="offer-title">One system, one price, one guarantee</h2>
-        <p class="section-lede">It's built in about two weeks on the tools you already use: Clio Grow, Lawmatics, MyCase, or a plain inbox and calendar.</p>
+        <p class="section-lede">We build it in about two weeks on the tools you already use, whether that's Clio Grow, Lawmatics, MyCase or a plain inbox and calendar.</p>
         <ul class="includes">
           <li>An intake audit of every channel where inquiries arrive</li>
-          <li>A reply library by case type, approved by your attorneys</li>
-          <li>Instant replies to forms and email, any hour, in the prospect's language</li>
+          <li>A reply library for each case type, approved by your attorneys</li>
+          <li>Instant replies to forms and emails at any hour, in the prospect's language</li>
           <li>Voicemail transcription with instant alerts to your team</li>
-          <li>Consult booking, plus follow-ups for prospects who don't book</li>
-          <li>A monthly report on response times, consults booked and leads won back</li>
+          <li>Consultation booking, plus follow-ups for prospects who don't book</li>
+          <li>A monthly report on response times, consultations booked and leads recovered</li>
         </ul>
       </div>
       <div class="price glass">
         <p class="price-name">5-Minute Intake System</p>
         <p class="price-main"><span class="num">$2,500</span> setup</p>
-        <p class="price-sub"><span class="num">$1,000</span> per month after the pilot. Month to month.</p>
+        <p class="price-sub"><span class="num">$1,000</span> per month after the pilot, billed month to month.</p>
         <hr>
-        <p class="price-guarantee"><strong>The guarantee:</strong> during your 30-day pilot, if any qualifying inquiry waits longer than five minutes for a first reply, we refund the setup fee and you keep the templates.</p>
-        <p class="price-founding">The first three firms pay $1,500 for setup in exchange for letting us publish their before-and-after response times, anonymized.</p>
+        <p class="price-guarantee"><strong>The guarantee:</strong> During your 30-day pilot, if any qualifying inquiry waits more than five minutes for a first reply, we refund your setup fee and you keep the templates.</p>
+        <p class="price-founding">Our first three firms pay $1,500 for setup in exchange for letting us publish their before-and-after response times anonymously.</p>
         <a class="btn btn-block" href="#test">Start with a free response-time test</a>
       </div>
     </div>
@@ -362,8 +362,8 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
     <div class="wrap test-grid">
       <div>
         <h2 id="test-title">Find out how long your firm takes to reply</h2>
-        <p class="section-lede">We'll send one test inquiry through your website form, clearly labeled as a LocalForge response-time test with no made-up client story. Then we'll email you the result: when it arrived, when the first reply came, and what the reply said.</p>
-        <p class="small">It's free, and it takes two business days.</p>
+        <p class="section-lede">We'll send one test inquiry through your website's contact form. It's clearly labeled as a LocalForge response-time test, with no made-up client story. Then we'll email you the results: when it arrived, when the first reply came and what the reply said.</p>
+        <p class="small">It's free and takes two business days.</p>
       </div>
       <form id="test-form" class="glass form" novalidate>
         <div class="field"><label for="f-firm">Firm name</label><input id="f-firm" name="firm" required maxlength="200" autocomplete="organization"></div>
@@ -380,9 +380,9 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
   <section class="faq" aria-labelledby="faq-title">
     <div class="wrap narrow">
       <h2 id="faq-title">Questions attorneys ask</h2>
-      <details><summary>Does the AI give legal advice?</summary><p>No. Replies acknowledge the inquiry, ask the questions you'd want answered before a consult, include your disclaimer and offer a booking link. Your attorneys approve every template before anything goes live.</p></details>
-      <details><summary>What about bar advertising and solicitation rules?</summary><p>Replies only go to people who contacted your firm first, and they follow the template language you approve for your state. We charge a flat fee, never a share of fees or a price per signed case.</p></details>
-      <details><summary>We already use Clio Grow or Lawmatics. Do we need to switch?</summary><p>No. We build on what you have. If your CRM already has an AI intake feature, we cover what it misses, usually email inquiries, voicemail follow-up and after-hours booking.</p></details>
+      <details><summary>Does the AI give legal advice?</summary><p>No. Replies acknowledge the inquiry, ask the questions you'd want answered before a consultation, include your disclaimer and offer a booking link. Your attorneys approve every template before anything goes live.</p></details>
+      <details><summary>What about bar advertising and solicitation rules?</summary><p>Replies go only to people who contacted your firm first, and they use the template language you approve for your state. We charge a flat fee, never a share of legal fees or a price per signed case.</p></details>
+      <details><summary>We already use Clio Grow or Lawmatics. Do we need to switch?</summary><p>No. We build on what you already have. If your CRM has a built-in AI intake feature, we cover the gaps it leaves, which are usually email inquiries, voicemail follow-up and after-hours booking.</p></details>
       <details><summary>Can replies go out in Spanish?</summary><p>Yes. Replies match the language of the inquiry, using Spanish templates your team approves.</p></details>
       <details><summary>Where does client information go?</summary><p>Inquiries stay in your systems and your inbox. We don't sell or share data, and we sign a confidentiality agreement before setup.</p></details>
     </div>
@@ -393,7 +393,7 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
   <div class="wrap footer-row">
     <a class="brand" href="#main"><svg class="orb-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="#F4F6FA" stroke="#C9D9E6" stroke-width="3"/><ellipse cx="11.5" cy="10.5" rx="4" ry="2.4" fill="#fff"/></svg><span>LocalForge</span></a>
     <p><a href="mailto:info@localforge.tech">info@localforge.tech</a></p>
-    <p class="small">© 2026 LocalForge. LocalForge is not a law firm and doesn't provide legal advice.</p>
+    <p class="small">© 2026 LocalForge. LocalForge is not a law firm and does not provide legal advice.</p>
   </div>
 </footer>
 
