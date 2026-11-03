@@ -6,7 +6,7 @@
 <title>LocalForge | AI intake for personal injury law firms</title>
 <meta name="description" content="LocalForge builds AI intake systems for personal injury law firms. Every web form, email and after-hours voicemail gets an accurate first reply in under five minutes.">
 <meta property="og:title" content="LocalForge | Every inquiry answered in under five minutes">
-<meta property="og:description" content="AI intake for personal injury law firms, with a 30-day pilot and a five-minute response guarantee.">
+<meta property="og:description" content="AI intake for personal injury law firms, with a five-minute response time.">
 <meta name="theme-color" content="#F3EEF0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22r%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E2ECF6%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23EDCCD3%22/%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23F7E2CD%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2390BBCC%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%22.35%22%20cy%3D%22.3%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E9EEF5%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2213%22%20fill%3D%22url%28%23c%29%22%20stroke%3D%22url%28%23r%29%22%20stroke-width%3D%223%22/%3E%3Cellipse%20cx%3D%2211.5%22%20cy%3D%2210.5%22%20rx%3D%224%22%20ry%3D%222.4%22%20fill%3D%22%23fff%22%20opacity%3D%22.9%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -207,19 +207,10 @@ section { position: relative; }
 }
 
 /* offer */
-.offer-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.offer-grid { display: grid; grid-template-columns: minmax(0, 760px); gap: clamp(28px, 5vw, 72px); align-items: start; }
 .includes { margin: 32px 0 0; padding: 0; list-style: none; }
 .includes li { position: relative; padding: 14px 0 14px 30px; border-top: 1px solid rgba(29,39,51,.1); }
 .includes li::before { content: ""; position: absolute; left: 2px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #CFE0EA 60%, #EDCCD3); box-shadow: 0 0 0 1px rgba(144,187,204,.6); }
-.price { padding: clamp(24px, 3.5vw, 40px); }
-.price-name { font-weight: 600; }
-.price-main { margin-top: 18px; font-size: 1.125rem; color: var(--ink-soft); }
-.price-main .num { font-size: clamp(2.75rem, 5vw, 3.75rem); font-weight: 500; letter-spacing: -0.04em; color: var(--ink); margin-right: 6px; }
-.price-sub { margin-top: 4px; color: var(--ink-soft); }
-.price-sub .num { color: var(--ink); font-weight: 600; }
-.price hr { border: 0; border-top: 1px solid rgba(29,39,51,.12); margin: 24px 0; }
-.price-guarantee { line-height: 1.55; }
-.price-founding { margin: 16px 0 26px; font-size: .9375rem; color: var(--ink-soft); }
 @media (max-width: 900px) { .offer-grid { grid-template-columns: 1fr; } }
 
 /* test form */
@@ -273,7 +264,7 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
   <nav aria-label="Primary">
     <a href="#leak">Why speed</a>
     <a href="#system">How it works</a>
-    <a href="#offer">Pricing</a>
+    <a href="#offer">What you get</a>
     <a class="btn btn-small" href="#test"><span class="hide-sm">Free response-time test</span><span class="show-sm">Free test</span></a>
   </nav>
 </header>
@@ -289,7 +280,6 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
         <a class="btn" href="#test">Get a free response-time test</a>
         <a class="btn btn-glass" href="#system">See how it works</a>
       </div>
-      <p class="guarantee">Try it for 30 days. If any inquiry waits more than five minutes for a first reply, we refund your setup fee.</p>
     </div>
     <p class="feed-note" aria-hidden="true">Illustration: inquiries flowing in, replies flowing out</p>
   </section>
@@ -335,7 +325,7 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
   <section id="offer" class="offer" aria-labelledby="offer-title">
     <div class="wrap offer-grid">
       <div>
-        <h2 id="offer-title">One system, one price, one guarantee</h2>
+        <h2 id="offer-title">What you get</h2>
         <p class="section-lede">We build it in about two weeks on the tools you already use, whether that's Clio Grow, Lawmatics, MyCase or a plain inbox and calendar.</p>
         <ul class="includes">
           <li>An intake audit of every channel where inquiries arrive</li>
@@ -345,15 +335,7 @@ details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
           <li>Consultation booking, plus follow-ups for prospects who don't book</li>
           <li>A monthly report on response times, consultations booked and leads recovered</li>
         </ul>
-      </div>
-      <div class="price glass">
-        <p class="price-name">5-Minute Intake System</p>
-        <p class="price-main"><span class="num">$2,500</span> setup</p>
-        <p class="price-sub"><span class="num">$1,000</span> per month after the pilot, billed month to month.</p>
-        <hr>
-        <p class="price-guarantee"><strong>The guarantee:</strong> During your 30-day pilot, if any qualifying inquiry waits more than five minutes for a first reply, we refund your setup fee and you keep the templates.</p>
-        <p class="price-founding">Our first three firms pay $1,500 for setup in exchange for letting us publish their before-and-after response times anonymously.</p>
-        <a class="btn btn-block" href="#test">Start with a free response-time test</a>
+        <a class="btn" href="#test" style="margin-top:28px">Start with a free response-time test</a>
       </div>
     </div>
   </section>
