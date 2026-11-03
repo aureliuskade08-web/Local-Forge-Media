@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LocalForge | AI intake for personal-injury firms</title>
+<meta name="description" content="LocalForge builds AI intake systems for personal-injury law firms. Every web form, email and after-hours voicemail gets an accurate first reply in under five minutes.">
+<meta property="og:title" content="LocalForge | Every inquiry answered in under five minutes">
+<meta property="og:description" content="AI intake for personal-injury firms. 30-day pilot with a five-minute response guarantee.">
+<meta name="theme-color" content="#F3EEF0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22r%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E2ECF6%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23EDCCD3%22/%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%23F7E2CD%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2390BBCC%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%22.35%22%20cy%3D%22.3%22%20r%3D%22.8%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E9EEF5%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2213%22%20fill%3D%22url%28%23c%29%22%20stroke%3D%22url%28%23r%29%22%20stroke-width%3D%223%22/%3E%3Cellipse%20cx%3D%2211.5%22%20cy%3D%2210.5%22%20rx%3D%224%22%20ry%3D%222.4%22%20fill%3D%22%23fff%22%20opacity%3D%22.9%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pearl: #FBF2EB;
+  --champagne: #F7E2CD;
+  --blush: #EDCCD3;
+  --ice: #E2ECF6;
+  --steel: #90BBCC;
+  --ink: #1D2733;
+  --ink-soft: #4A5867;
+  --deep: #2C5A70;
+  --glass: rgba(255, 255, 255, 0.42);
+  --glass-strong: rgba(255, 255, 255, 0.66);
+  --glass-line: rgba(255, 255, 255, 0.75);
+  --iris: conic-gradient(from 200deg at 70% 80%, #E2ECF6, #EDCCD3, #F7E2CD, #90BBCC, #E2ECF6);
+  --r-lg: 28px;
+  --r-md: 14px;
+  --shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 24px 60px -28px rgba(44, 90, 112, .28), 0 2px 6px -2px rgba(29, 39, 51, .06);
+  --font: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --step--1: .875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.75rem, 3.2vw, 2.5rem);
+  --step-3: clamp(2.6rem, 6.2vw, 5.1rem);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 85% -10%, rgba(237, 204, 211, .65), transparent 60%),
+    radial-gradient(900px 700px at -10% 30%, rgba(226, 236, 246, .95), transparent 60%),
+    radial-gradient(1000px 800px at 100% 70%, rgba(247, 226, 205, .55), transparent 60%),
+    linear-gradient(180deg, #F1F4F9 0%, #F8F2EE 50%, #F3EEF2 100%);
+  background-attachment: fixed;
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: var(--deep); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--deep); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; margin: 0; text-wrap: balance; }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); letter-spacing: -0.015em; }
+p { margin: 0; }
+.small { font-size: var(--step--1); color: var(--ink-soft); }
+.wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+.narrow { width: min(760px, 100% - 32px); }
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 8px; z-index: 100; }
+.skip:focus { left: 16px; }
+
+/* glass material */
+.glass {
+  position: relative;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+.glass::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  /* only the lower-right edge carries the spectrum */
+  background: linear-gradient(135deg, rgba(255,255,255,0) 48%, #E2ECF6 62%, #EDCCD3 74%, #F7E2CD 86%, #90BBCC 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: .95;
+  pointer-events: none;
+}
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 48px; padding: .75em 1.4em;
+  border-radius: 999px; border: 1px solid transparent;
+  background: var(--ink); color: #FBF7F4;
+  font: inherit; font-weight: 500; font-size: 1rem; letter-spacing: -0.005em;
+  text-decoration: none; cursor: pointer;
+  box-shadow: 0 10px 30px -12px rgba(29, 39, 51, .55), 0 1px 0 rgba(255,255,255,.15) inset;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease), background .2s;
+}
+.btn:hover { color: #fff; background: #26323F; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-glass { background: var(--glass-strong); color: var(--ink); border-color: var(--glass-line); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: var(--shadow); }
+.btn-glass:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+.btn-small { min-height: 40px; padding: .5em 1.1em; font-size: .9375rem; }
+.btn-block { width: 100%; }
+.btn[disabled] { opacity: .6; cursor: progress; }
+
+/* nav */
+.nav {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+  width: min(1180px, 100% - 24px);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 8px 8px 8px 18px; z-index: 50;
+  background: rgba(255,255,255,.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5); backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid var(--glass-line); border-radius: 999px;
+  box-shadow: 0 12px 40px -24px rgba(44, 90, 112, .35);
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 600; letter-spacing: -0.02em; font-size: 1.125rem; }
+.orb-mark { width: 26px; height: 26px; }
+.nav nav { display: flex; align-items: center; gap: 6px; }
+.nav nav a:not(.btn) { color: var(--ink-soft); text-decoration: none; padding: 8px 12px; border-radius: 999px; font-size: .9375rem; }
+.nav nav a:not(.btn):hover { color: var(--ink); background: rgba(255,255,255,.6); }
+@media (max-width: 760px) { .nav nav a:not(.btn) { display: none; } }
+
+/* hero */
+.hero { position: relative; min-height: 100svh; display: grid; align-items: center; overflow: hidden; }
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-copy { position: relative; z-index: 2; width: min(1180px, 100% - 32px); margin-inline: auto; padding: 120px 0 80px; }
+.hero-copy h1 { font-size: var(--step-3); max-width: 11.5ch; letter-spacing: -0.04em; line-height: 1; }
+.lede { margin-top: 28px; max-width: 52ch; font-size: var(--step-1); line-height: 1.55; color: var(--ink-soft); }
+.cta-row { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.guarantee { margin-top: 22px; max-width: 52ch; font-size: var(--step--1); color: var(--ink-soft); padding-left: 14px; border-left: 2px solid var(--steel); }
+.feed-note { position: absolute; right: 24px; bottom: 18px; z-index: 2; font-size: .75rem; color: var(--ink-soft); opacity: .75; }
+.tags { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.tag {
+  position: absolute; left: 0; top: 0;
+  display: flex; align-items: center; gap: 8px;
+  font-size: .72rem; line-height: 1.25; white-space: nowrap; color: var(--ink);
+  padding: 5px 9px 5px 7px; border-radius: 999px;
+  background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px -10px rgba(44,90,112,.45);
+  transition: opacity .35s var(--ease), background .3s;
+  will-change: transform, opacity;
+}
+.tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--steel); box-shadow: 0 0 0 3px rgba(144,187,204,.25); }
+.tag.done { background: rgba(255, 249, 244, .9); }
+.tag.done i { background: #D9A9B4; box-shadow: 0 0 0 3px rgba(237,204,211,.45); }
+.tag b { font-weight: 600; }
+@media (max-width: 760px) {
+  .hero { align-items: end; }
+  .hero-copy { padding: 52vh 0 56px; }
+  .feed-note { display: none; }
+}
+
+/* sections */
+section { position: relative; }
+.leak, .offer, .test, .faq { padding: clamp(80px, 12vw, 150px) 0; }
+.section-lede { margin-top: 18px; max-width: 60ch; color: var(--ink-soft); font-size: 1.125rem; }
+
+.timeline { margin: 48px 0 0; padding: 28px clamp(18px, 3vw, 36px) 22px; }
+.tl-axis { display: flex; justify-content: space-between; font-size: .75rem; color: var(--ink-soft); padding-bottom: 10px; border-bottom: 1px dashed rgba(74, 88, 103, .25); }
+.tl-bar { position: relative; margin-top: 22px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.45); overflow: hidden; }
+.tl-fill { position: absolute; inset: 0 auto 0 0; width: var(--w); min-width: 6px; border-radius: 12px; transform-origin: left; }
+.tl-us .tl-fill { background: linear-gradient(90deg, #8DB8CC, #B9D3E0); }
+.tl-them .tl-fill { background: repeating-linear-gradient(90deg, rgba(237,204,211,.9) 0 6px, rgba(247,226,205,.9) 6px 12px); }
+.tl-label { position: relative; z-index: 1; display: flex; align-items: center; height: 100%; padding-left: 16px; font-size: .9375rem; font-weight: 500; }
+.tl-us .tl-label { padding-left: 24px; }
+.timeline figcaption { margin-top: 16px; font-size: .8125rem; color: var(--ink-soft); }
+.js .tl-fill { transform: scaleX(0); transition: transform 1.6s var(--ease); }
+.js .timeline.in .tl-fill { transform: scaleX(1); }
+.js .timeline.in .tl-them .tl-fill { transition-duration: 2.6s; }
+
+.facts { margin: 56px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
+.facts div { padding-top: 18px; border-top: 1px solid rgba(29, 39, 51, .14); }
+.facts dt { font-size: clamp(2rem, 3.6vw, 2.75rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1; }
+.facts dd { margin: 12px 0 0; color: var(--ink-soft); font-size: .9688rem; }
+@media (max-width: 860px) { .facts { grid-template-columns: 1fr; } }
+
+/* system */
+.system { display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; width: min(1180px, 100% - 32px); margin-inline: auto; padding: clamp(60px, 8vw, 110px) 0; }
+.system-stage { position: sticky; top: 90px; height: min(78vh, 720px); border-radius: var(--r-lg); overflow: hidden; }
+#layers-canvas { width: 100%; height: 100%; }
+.system-copy { padding: 6vh 0 10vh; }
+.steps { list-style: none; margin: 40px 0 0; padding: 0; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding: 26px 0 26px 56px; min-height: 24vh; border-top: 1px solid rgba(29,39,51,.12); }
+.steps li h3 { color: var(--ink-soft); transition: color .3s var(--ease); }
+.steps li.active h3 { color: var(--ink); }
+.steps li::before { transition: background .3s var(--ease), color .3s var(--ease); content: counter(s); position: absolute; left: 0; top: 24px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: .875rem; font-weight: 600; background: rgba(255,255,255,.7); border: 1px solid var(--glass-line); }
+.steps li.active::before { background: var(--ink); color: #fff; border-color: var(--ink); }
+.steps p { margin-top: 10px; color: var(--ink-soft); max-width: 46ch; }
+@media (max-width: 900px) {
+  .system { grid-template-columns: 1fr; }
+  .system-stage { position: relative; top: 0; height: 56vh; }
+  .system-copy { padding: 0; }
+  .steps li { min-height: 0; }
+}
+
+/* offer */
+.offer-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.includes { margin: 32px 0 0; padding: 0; list-style: none; }
+.includes li { position: relative; padding: 14px 0 14px 30px; border-top: 1px solid rgba(29,39,51,.1); }
+.includes li::before { content: ""; position: absolute; left: 2px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #CFE0EA 60%, #EDCCD3); box-shadow: 0 0 0 1px rgba(144,187,204,.6); }
+.price { padding: clamp(24px, 3.5vw, 40px); }
+.price-name { font-weight: 600; }
+.price-main { margin-top: 18px; font-size: 1.125rem; color: var(--ink-soft); }
+.price-main .num { font-size: clamp(2.75rem, 5vw, 3.75rem); font-weight: 500; letter-spacing: -0.04em; color: var(--ink); margin-right: 6px; }
+.price-sub { margin-top: 4px; color: var(--ink-soft); }
+.price-sub .num { color: var(--ink); font-weight: 600; }
+.price hr { border: 0; border-top: 1px solid rgba(29,39,51,.12); margin: 24px 0; }
+.price-guarantee { line-height: 1.55; }
+.price-founding { margin: 16px 0 26px; font-size: .9375rem; color: var(--ink-soft); }
+@media (max-width: 900px) { .offer-grid { grid-template-columns: 1fr; } }
+
+/* test form */
+.test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.test .small { margin-top: 16px; }
+.form { padding: clamp(22px, 3vw, 34px); display: grid; gap: 16px; }
+.field label { display: block; font-size: .9375rem; font-weight: 500; margin-bottom: 6px; }
+.field input { width: 100%; min-height: 48px; padding: 10px 14px; font: inherit; color: var(--ink); background: rgba(255,255,255,.75); border: 1px solid rgba(29,39,51,.16); border-radius: var(--r-md); transition: border-color .2s, box-shadow .2s; }
+.field input:focus { outline: none; border-color: var(--deep); box-shadow: 0 0 0 4px rgba(44,90,112,.15); }
+.field input[aria-invalid="true"] { border-color: #A34B5C; }
+.field-error { margin-top: 6px; font-size: .875rem; color: #8E3346; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
+.form-status { min-height: 1.4em; font-size: .9375rem; }
+.form-status.ok { color: #285E4A; }
+.form-status.err { color: #8E3346; }
+@media (max-width: 900px) { .test-grid { grid-template-columns: 1fr; } }
+
+/* faq */
+.faq h2 { margin-bottom: 28px; }
+details { border-top: 1px solid rgba(29,39,51,.12); }
+details:last-of-type { border-bottom: 1px solid rgba(29,39,51,.12); }
+summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 500; font-size: 1.125rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: ""; position: absolute; right: 6px; top: 50%; width: 12px; height: 12px; border-right: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); transform: translateY(-70%) rotate(45deg); transition: transform .25s var(--ease); }
+details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+details p { padding: 0 0 22px; color: var(--ink-soft); max-width: 64ch; }
+
+/* footer */
+.footer { padding: 48px 0 56px; border-top: 1px solid rgba(29,39,51,.08); }
+.footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+
+.show-sm { display: none; }
+@media (max-width: 760px) { .hide-sm { display: none; } .show-sm { display: inline; } }
+
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="brand" href="#" aria-label="LocalForge home">
+    <svg class="orb-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E2ECF6"/><stop offset=".45" stop-color="#EDCCD3"/><stop offset=".7" stop-color="#F7E2CD"/><stop offset="1" stop-color="#90BBCC"/></linearGradient><radialGradient id="core" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#E9EEF5"/></radialGradient></defs><circle cx="16" cy="16" r="13" fill="url(#core)" stroke="url(#rim)" stroke-width="3"/><ellipse cx="11.5" cy="10.5" rx="4" ry="2.4" fill="#fff" opacity=".9"/></svg>
+    <span>LocalForge</span>
+  </a>
+  <nav aria-label="Primary">
+    <a href="#leak">Why speed</a>
+    <a href="#system">How it works</a>
+    <a href="#offer">Pricing</a>
+    <a class="btn btn-small" href="#test"><span class="hide-sm">Free response-time test</span><span class="show-sm">Free test</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div id="hero-tags" class="tags" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <h1 id="hero-title">Every inquiry answered in under five minutes.</h1>
+      <p class="lede">LocalForge builds AI intake for personal-injury firms. Web forms, emails and after-hours voicemails get an accurate, attorney-approved first reply and a booking link while the prospect is still deciding who to hire.</p>
+      <div class="cta-row">
+        <a class="btn" href="#test">Get a free response-time test</a>
+        <a class="btn btn-glass" href="#system">See how it works</a>
+      </div>
+      <p class="guarantee">30-day pilot. If any inquiry waits longer than five minutes for a first reply, your setup fee comes back.</p>
+    </div>
+    <p class="feed-note" aria-hidden="true">Illustration: inquiries flowing in, replies flowing out</p>
+  </section>
+
+  <section id="leak" class="leak" aria-labelledby="leak-title">
+    <div class="wrap">
+      <h2 id="leak-title">Most firms reply tomorrow. Clients sign today.</h2>
+      <p class="section-lede">When a prospective client reaches out, they usually contact more than one firm. The first one to reply has the advantage, and right now that's rarely the firm that paid for the click.</p>
+
+      <figure class="timeline glass" aria-labelledby="tl-cap">
+        <div class="tl-track" role="img" aria-label="Timeline from zero to 72 hours. LocalForge replies by minute five. In a secret-shopper study, more than half of law firms had not returned a voicemail after 72 hours.">
+          <div class="tl-axis"><span>0</span><span>12h</span><span>24h</span><span>48h</span><span>72h</span></div>
+          <div class="tl-bar tl-us"><span class="tl-fill" style="--w: 1.2%"></span><span class="tl-label">LocalForge: first reply by minute 5</span></div>
+          <div class="tl-bar tl-them"><span class="tl-fill" style="--w: 100%"></span><span class="tl-label">Typical firm: more than half hadn't returned a voicemail after 72 hours</span></div>
+        </div>
+        <figcaption id="tl-cap">Source: <a href="https://www.clio.com/?p=14687" rel="noopener">Clio secret-shopper study of law firm responsiveness</a>.</figcaption>
+      </figure>
+
+      <dl class="facts">
+        <div><dt>39%</dt><dd>of calls to law firms went to voicemail in Clio's secret-shopper study. Only about 40% of firms replied to email at all. <a href="https://www.clio.com/?p=14687" rel="noopener">Clio</a></dd></div>
+        <div><dt>$284</dt><dd>average cost per personal-injury lead across 13 firms' Google Ads and LSA spend, with about 7% of leads becoming signed cases. <a href="https://rankings.io/personal-injury-lead-costs/" rel="noopener">Rankings.io, 2026</a></dd></div>
+        <div><dt>78%</dt><dd>of consumers say they've given up on a business after a call went unanswered. <a href="https://www.callrail.com/blog/missed-calls-cost-businesses-more-than-ever" rel="noopener">CallRail, 2025</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="system" class="system" aria-labelledby="system-title">
+    <div class="system-stage glass">
+      <canvas id="layers-canvas" aria-hidden="true"></canvas>
+    </div>
+    <div class="system-copy">
+      <h2 id="system-title">How the 5-Minute Intake System works</h2>
+      <p class="section-lede">Four layers sit between your website and your calendar. Each inquiry passes through all four in minutes, day or night.</p>
+      <ol class="steps">
+        <li data-step="0"><h3>Capture</h3><p>Web forms, intake emails and after-hours voicemails land in one queue. Voicemails are transcribed the moment they're left.</p></li>
+        <li data-step="1"><h3>Classify</h3><p>Each inquiry is sorted by case type, urgency and location, and anything that needs a human right away is flagged.</p></li>
+        <li data-step="2"><h3>Reply</h3><p>A personal first reply goes out from your firm's address, built from templates your attorneys approved. It never gives legal advice.</p></li>
+        <li data-step="3"><h3>Book</h3><p>The reply carries a link to your consult calendar. Prospects who don't book get two short follow-ups, and you get a monthly report on response times.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="offer" class="offer" aria-labelledby="offer-title">
+    <div class="wrap offer-grid">
+      <div>
+        <h2 id="offer-title">One system, one price, one guarantee</h2>
+        <p class="section-lede">It's built in about two weeks on the tools you already use: Clio Grow, Lawmatics, MyCase, or a plain inbox and calendar.</p>
+        <ul class="includes">
+          <li>An intake audit of every channel where inquiries arrive</li>
+          <li>A reply library by case type, approved by your attorneys</li>
+          <li>Instant replies to forms and email, any hour, in the prospect's language</li>
+          <li>Voicemail transcription with instant alerts to your team</li>
+          <li>Consult booking, plus follow-ups for prospects who don't book</li>
+          <li>A monthly report on response times, consults booked and leads won back</li>
+        </ul>
+      </div>
+      <div class="price glass">
+        <p class="price-name">5-Minute Intake System</p>
+        <p class="price-main"><span class="num">$2,500</span> setup</p>
+        <p class="price-sub"><span class="num">$1,000</span> per month after the pilot. Month to month.</p>
+        <hr>
+        <p class="price-guarantee"><strong>The guarantee:</strong> during your 30-day pilot, if any qualifying inquiry waits longer than five minutes for a first reply, we refund the setup fee and you keep the templates.</p>
+        <p class="price-founding">The first three firms pay $1,500 for setup in exchange for letting us publish their before-and-after response times, anonymized.</p>
+        <a class="btn btn-block" href="#test">Start with a free response-time test</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="test" class="test" aria-labelledby="test-title">
+    <div class="wrap test-grid">
+      <div>
+        <h2 id="test-title">Find out how long your firm takes to reply</h2>
+        <p class="section-lede">We'll send one test inquiry through your website form, clearly labeled as a LocalForge response-time test with no made-up client story. Then we'll email you the result: when it arrived, when the first reply came, and what the reply said.</p>
+        <p class="small">It's free, and it takes two business days.</p>
+      </div>
+      <form id="test-form" class="glass form" novalidate>
+        <div class="field"><label for="f-firm">Firm name</label><input id="f-firm" name="firm" required maxlength="200" autocomplete="organization"></div>
+        <div class="field"><label for="f-site">Firm website</label><input id="f-site" name="website" type="url" maxlength="300" placeholder="https://" inputmode="url"></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" maxlength="120" autocomplete="name"></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" required maxlength="200" autocomplete="email"><p class="field-error" id="f-email-err" hidden>Enter an email address like name@yourfirm.com.</p></div>
+        <input class="hp" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-block" type="submit">Request my test</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-title">
+    <div class="wrap narrow">
+      <h2 id="faq-title">Questions attorneys ask</h2>
+      <details><summary>Does the AI give legal advice?</summary><p>No. Replies acknowledge the inquiry, ask the questions you'd want answered before a consult, include your disclaimer and offer a booking link. Your attorneys approve every template before anything goes live.</p></details>
+      <details><summary>What about bar advertising and solicitation rules?</summary><p>Replies only go to people who contacted your firm first, and they follow the template language you approve for your state. We charge a flat fee, never a share of fees or a price per signed case.</p></details>
+      <details><summary>We already use Clio Grow or Lawmatics. Do we need to switch?</summary><p>No. We build on what you have. If your CRM already has an AI intake feature, we cover what it misses, usually email inquiries, voicemail follow-up and after-hours booking.</p></details>
+      <details><summary>Can replies go out in Spanish?</summary><p>Yes. Replies match the language of the inquiry, using Spanish templates your team approves.</p></details>
+      <details><summary>Where does client information go?</summary><p>Inquiries stay in your systems and your inbox. We don't sell or share data, and we sign a confidentiality agreement before setup.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-row">
+    <a class="brand" href="#main"><svg class="orb-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="#F4F6FA" stroke="#C9D9E6" stroke-width="3"/><ellipse cx="11.5" cy="10.5" rx="4" ry="2.4" fill="#fff"/></svg><span>LocalForge</span></a>
+    <p><a href="mailto:info@localforge.tech">info@localforge.tech</a></p>
+    <p class="small">© 2026 LocalForge. LocalForge is not a law firm and doesn't provide legal advice.</p>
+  </div>
+</footer>
+
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+// ---- hero ----
+// LocalForge hero: inquiries flow along dotted curves into a liquid-glass prism; replies leave in warm tones.
+// Light-mode adaptation of the "gateway flow" + point-cloud tracking references.
+
+
+const INK = new THREE.Color('#2C5A70');
+const ROSE = new THREE.Color('#C98A9B');
+const CHANNELS = ['web form', 'email', 'voicemail', 'web form', 'web form', 'email'];
+
+function dotTexture() {
+  const c = document.createElement('canvas'); c.width = c.height = 64;
+  const g = c.getContext('2d');
+  const r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(.45, 'rgba(255,255,255,.95)'); r.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = r; g.fillRect(0, 0, 64, 64);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+function blobTexture(hex) {
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const g = c.getContext('2d');
+  const r = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+  r.addColorStop(0, hex); r.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = r; g.fillRect(0, 0, 256, 256);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const rand = (a, b) => a + Math.random() * (b - a);
+const fmtReply = () => { const s = Math.floor(rand(38, 290)); return `${Math.floor(s / 60)}m ${String(s % 60).padStart(2, '0')}s`; };
+const fmtTime = () => { const h = [6, 7, 8, 9, 10, 11][Math.floor(Math.random() * 6)]; const m = String(Math.floor(rand(0, 60))).padStart(2, '0'); return `${h}:${m} pm`; };
+
+function initHero(canvas, tagLayer, { reduced = false } = {}) {
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+  camera.position.set(0, 0, 14);
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  const sprite = dotTexture();
+  const target = new THREE.Vector3();
+  let halfW = 7, halfH = 4.4, mobile = false;
+
+  // --- color fields behind the glass (refracted by transmission) ---
+  const blobs = new THREE.Group(); scene.add(blobs);
+  [['#EDCCD3', 4.2], ['#E2ECF6', 4.8], ['#F7E2CD', 3.6], ['#90BBCC', 2.6]].forEach(([hex, s], i) => {
+    const m = new THREE.Sprite(new THREE.SpriteMaterial({ map: blobTexture(hex), transparent: true, opacity: i === 3 ? .55 : .9, depthWrite: false }));
+    m.scale.setScalar(s); m.userData.phase = i * 1.7; blobs.add(m);
+  });
+
+  // --- liquid glass prism ---
+  const orbGroup = new THREE.Group(); scene.add(orbGroup);
+  const geo = new THREE.SphereGeometry(1.6, 96, 96);
+  const base = geo.attributes.position.array.slice();
+  // thin-film glass: fresnel rim with a pastel spectrum, frosted interior, soft highlight
+  const orbMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false,
+    uniforms: { uTime: { value: 0 } },
+    vertexShader: `
+      varying vec3 vN; varying vec3 vV; varying vec3 vW;
+      void main(){
+        vec4 mv = modelViewMatrix * vec4(position,1.0);
+        vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz);
+        vW = normalize((modelMatrix * vec4(normal,0.0)).xyz);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      uniform float uTime; varying vec3 vN; varying vec3 vV; varying vec3 vW;
+      vec3 film(float t){
+        vec3 ice = vec3(0.886,0.925,0.965), blush = vec3(0.929,0.800,0.827),
+             champ = vec3(0.969,0.886,0.804), steel = vec3(0.565,0.733,0.800), mint = vec3(0.70,0.90,0.88);
+        t = fract(t);
+        if (t < .2) return mix(ice, blush, t/.2);
+        if (t < .4) return mix(blush, champ, (t-.2)/.2);
+        if (t < .6) return mix(champ, mint, (t-.4)/.2);
+        if (t < .8) return mix(mint, steel, (t-.6)/.2);
+        return mix(steel, ice, (t-.8)/.2);
+      }
+      void main(){
+        vec3 n = normalize(vN); vec3 v = normalize(vV);
+        float ndv = clamp(dot(n,v),0.0,1.0);
+        float fres = pow(1.0 - ndv, 2.4);
+        vec3 rim = film(fres*1.7 + n.x*.32 + n.y*.22 + vW.y*.12 + uTime*.035);
+        vec3 inner = mix(vec3(0.97,0.975,0.99), vec3(0.88,0.93,0.97), smoothstep(-0.6,0.9,-vW.y));
+        inner = mix(inner, vec3(0.62,0.86,0.86), smoothstep(0.2,0.9, -vW.y*0.6 + vW.x*0.5) * .35);
+        vec3 L = normalize(vec3(-0.5,0.7,0.6));
+        float spec = pow(max(dot(reflect(-L,n), v),0.0), 48.0);
+        float spec2 = pow(max(dot(reflect(-normalize(vec3(0.6,-0.4,0.5)),n), v),0.0), 18.0)*.25;
+        vec3 col = mix(inner, rim*1.04, smoothstep(0.05,0.85,fres));
+        col += vec3(1.0)*(spec + spec2);
+        float a = 0.30 + fres*0.62 + spec*0.6;
+        gl_FragColor = vec4(col, clamp(a,0.0,0.96));
+      }`,
+  });
+  const orb = new THREE.Mesh(geo, orbMat); orbGroup.add(orb);
+
+  // point-cloud shell (scan reference)
+  const shellN = 700, shellPos = new Float32Array(shellN * 3);
+  for (let i = 0; i < shellN; i++) {
+    const y = 1 - (i / (shellN - 1)) * 2, r = Math.sqrt(1 - y * y), th = i * 2.399963;
+    const R = 2.25 + (Math.random() - .5) * .08;
+    shellPos.set([Math.cos(th) * r * R, y * R, Math.sin(th) * r * R], i * 3);
+  }
+  const shellGeo = new THREE.BufferGeometry(); shellGeo.setAttribute('position', new THREE.BufferAttribute(shellPos, 3));
+  const shell = new THREE.Points(shellGeo, new THREE.PointsMaterial({ color: '#4A5867', size: 0.035, map: sprite, transparent: true, opacity: .38, depthWrite: false }));
+  orbGroup.add(shell);
+  const ringGeo = new THREE.RingGeometry(2.55, 2.565, 160);
+  const ring = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: '#4A5867', transparent: true, opacity: .18, side: THREE.DoubleSide }));
+  ring.rotation.x = Math.PI * .42; orbGroup.add(ring);
+
+  // --- streams ---
+  const lineGroup = new THREE.Group(); scene.add(lineGroup);
+  let inCurves = [], outCurves = [];
+  let inPts, outPts, inState = [], outState = [];
+
+  function buildStreams() {
+    lineGroup.clear();
+    inPts && scene.remove(inPts); outPts && scene.remove(outPts);
+    const nIn = mobile ? 22 : 44, nOut = mobile ? 10 : 18;
+    inCurves = []; outCurves = [];
+    for (let i = 0; i < nIn; i++) {
+      const fromTop = i % 5 === 4;
+      const sy = fromTop ? halfH + 1 : (i / nIn) * halfH * 2.6 - halfH * 1.3;
+      const sx = fromTop ? rand(-halfW, target.x - 1) : -halfW - 1;
+      const z = rand(-2.5, 1.2);
+      const p0 = new THREE.Vector3(sx, sy, z);
+      const p1 = new THREE.Vector3(fromTop ? sx : sx * .45 + target.x * .2, fromTop ? sy * .5 : sy, z * .6);
+      const p2 = new THREE.Vector3(target.x - 3.2, target.y + (sy - target.y) * .18, z * .3);
+      const p3 = target.clone().add(new THREE.Vector3(-1.45 * orbGroup.scale.x, (sy - target.y) * .06, 0));
+      inCurves.push(new THREE.CubicBezierCurve3(p0, p1, p2, p3));
+    }
+    for (let i = 0; i < nOut; i++) {
+      const ey = (i / nOut) * halfH * 2.4 - halfH * 1.2;
+      const p0 = target.clone().add(new THREE.Vector3(1.4 * orbGroup.scale.x, ey * .05, 0));
+      const p1 = new THREE.Vector3(target.x + 2.4, target.y + ey * .15, rand(-1, 1));
+      const p2 = new THREE.Vector3(halfW * .85, ey * .8, rand(-1.5, .5));
+      const p3 = new THREE.Vector3(halfW + 1.5, ey, rand(-2, 0));
+      outCurves.push(new THREE.CubicBezierCurve3(p0, p1, p2, p3));
+    }
+    const dashed = (curves, color, opacity) => curves.forEach(c => {
+      const g = new THREE.BufferGeometry().setFromPoints(c.getPoints(90));
+      const l = new THREE.Line(g, new THREE.LineDashedMaterial({ color, dashSize: .045, gapSize: .13, transparent: true, opacity, depthWrite: false }));
+      l.computeLineDistances(); lineGroup.add(l);
+    });
+    dashed(inCurves, '#3D4E60', .2);
+    dashed(outCurves, '#B98593', .26);
+
+    const mk = (n, color, size) => {
+      const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(n * 3), 3));
+      return new THREE.Points(g, new THREE.PointsMaterial({ color, size, map: sprite, transparent: true, depthWrite: false, opacity: .95 }));
+    };
+    inState = []; outState = [];
+    const perIn = 2, perOut = 2;
+    inCurves.forEach((_, c) => { for (let k = 0; k < perIn; k++) inState.push({ c, t: Math.random(), v: rand(.11, .2) }); });
+    outCurves.forEach((_, c) => { for (let k = 0; k < perOut; k++) outState.push({ c, t: Math.random(), v: rand(.14, .24) }); });
+    inPts = mk(inState.length, INK, .085); outPts = mk(outState.length, ROSE, .085);
+    scene.add(inPts, outPts);
+    tags.forEach(t => t.el.remove()); tags.length = 0;
+  }
+
+  function layout() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    halfH = camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    halfW = halfH * camera.aspect;
+    mobile = w < 760;
+    if (mobile) target.set(0, halfH * .5, 0); else target.set(halfW * .44, .15, 0);
+    orbGroup.position.copy(target);
+    orbGroup.scale.setScalar(mobile ? .62 : 1);
+    blobs.position.set(target.x, target.y, -3.5);
+    buildStreams();
+  }
+
+  // --- tracking tags (HTML overlay) ---
+  const tags = [];
+  const v = new THREE.Vector3();
+  function spawnTag() {
+    if (tags.length >= (mobile ? 2 : 3)) return;
+    const cand = inState.filter(p => p.t < .25 && !p.tagged);
+    if (!cand.length) return;
+    const p = cand[Math.floor(Math.random() * cand.length)];
+    p.tagged = true;
+    const id = 570000 + Math.floor(Math.random() * 9999);
+    const el = document.createElement('div');
+    el.className = 'tag'; el.style.opacity = '0';
+    el.innerHTML = `<i></i><span><b>#${id}</b> ${CHANNELS[Math.floor(Math.random() * CHANNELS.length)]}, ${fmtTime()}</span>`;
+    tagLayer.appendChild(el);
+    requestAnimationFrame(() => (el.style.opacity = '1'));
+    tags.push({ el, p, phase: 'in', id });
+  }
+  function placeTag(tag, pos) {
+    v.copy(pos).project(camera);
+    const x = (v.x * .5 + .5) * canvas.clientWidth, y = (-v.y * .5 + .5) * canvas.clientHeight;
+    tag.el.style.transform = `translate(${x + 12}px, ${y - 30}px)`;
+    // keep tags off the headline: desktop shows them right of the copy, mobile above it
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    const clear = mobile ? y < h * .42 && y > 70 : x > w * .5 && y > 80;
+    tag.el.style.visibility = clear ? 'visible' : 'hidden';
+  }
+
+  // --- interaction ---
+  const pointer = { x: 0, y: 0 };
+  const ripples = [];
+  const onMove = e => { pointer.x = (e.clientX / innerWidth) * 2 - 1; pointer.y = (e.clientY / innerHeight) * 2 - 1; };
+  const onClick = e => {
+    const r = canvas.getBoundingClientRect();
+    if (e.clientY < r.top || e.clientY > r.bottom) return;
+    if (e.target.closest('a,button,input,label')) return;
+    v.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1, .5).unproject(camera);
+    const dir = v.sub(camera.position).normalize();
+    const d = -camera.position.z / dir.z;
+    ripples.push({ p: camera.position.clone().add(dir.multiplyScalar(d)), r: 0, life: 1 });
+  };
+  window.addEventListener('pointermove', onMove, { passive: true });
+  window.addEventListener('click', onClick);
+
+  // --- loop ---
+  const tmp = new THREE.Vector3();
+  let last = performance.now(), running = true, tagClock = 1, time = 0;
+
+  function displace(pos) {
+    for (const rp of ripples) {
+      const dx = pos.x - rp.p.x, dy = pos.y - rp.p.y, dist = Math.hypot(dx, dy) || 1;
+      const band = Math.abs(dist - rp.r);
+      if (band < 1.2) { const f = (1 - band / 1.2) * rp.life * .9; pos.x += dx / dist * f; pos.y += dy / dist * f; }
+    }
+  }
+
+  function step(dt) {
+    time += dt;
+    // liquid wobble
+    const pa = geo.attributes.position;
+    for (let i = 0; i < pa.count; i++) {
+      const x = base[i * 3], y = base[i * 3 + 1], z = base[i * 3 + 2];
+      const n = Math.sin(x * 1.7 + time * .9) * Math.sin(y * 2.1 + time * .7) * Math.cos(z * 1.5 + time * .6);
+      const s = 1 + n * .045;
+      pa.setXYZ(i, x * s, y * s, z * s);
+    }
+    pa.needsUpdate = true; geo.computeVertexNormals();
+    orbMat.uniforms.uTime.value = time;
+    orb.rotation.y += dt * .12; shell.rotation.y -= dt * .05; shell.rotation.x = Math.sin(time * .2) * .2; ring.rotation.z += dt * .1;
+    blobs.children.forEach((b, i) => { const ph = b.userData.phase + time * .25; b.position.set(Math.cos(ph) * 1.1, Math.sin(ph * 1.3) * .8, -i * .1); });
+
+    ripples.forEach(r => { r.r += dt * 9; r.life -= dt * .9; });
+    for (let i = ripples.length - 1; i >= 0; i--) if (ripples[i].life <= 0) ripples.splice(i, 1);
+
+    const ia = inPts.geometry.attributes.position;
+    inState.forEach((p, i) => {
+      p.t += p.v * dt;
+      if (p.t >= 1) { p.t = 0; p.v = rand(.11, .2); }
+      inCurves[p.c].getPoint(p.t, tmp); displace(tmp); ia.setXYZ(i, tmp.x, tmp.y, tmp.z);
+    });
+    ia.needsUpdate = true;
+    const oa = outPts.geometry.attributes.position;
+    outState.forEach((p, i) => {
+      p.t += p.v * dt;
+      if (p.t >= 1) { p.t = 0; p.v = rand(.14, .24); p.tagged = false; }
+      outCurves[p.c].getPoint(p.t, tmp); displace(tmp); oa.setXYZ(i, tmp.x, tmp.y, tmp.z);
+    });
+    oa.needsUpdate = true;
+
+    // tags follow particles; on arrival they hand off to an outbound reply
+    tagClock += dt;
+    if (tagClock > 1.2) { tagClock = 0; spawnTag(); }
+    for (let k = tags.length - 1; k >= 0; k--) {
+      const tg = tags[k];
+      if (tg.phase === 'in') {
+        if (tg.p.t > .97 || tg.p.t < .01) {
+          tg.p.tagged = false;
+          const free = outState.filter(o => !o.tagged).sort((a, b) => a.t - b.t)[0];
+          if (!free) { tg.el.remove(); tags.splice(k, 1); continue; }
+          free.t = 0; free.tagged = true; tg.p = free; tg.phase = 'out';
+          tg.el.classList.add('done');
+          tg.el.innerHTML = `<i></i><span><b>#${tg.id}</b> replied in ${fmtReply()}</span>`;
+        }
+        inCurves[tg.p.c].getPoint(Math.min(tg.p.t, 1), tmp);
+      } else {
+        outCurves[tg.p.c].getPoint(Math.min(tg.p.t, 1), tmp);
+        if (tg.p.t > .62 && !tg.fading) { tg.fading = true; tg.el.style.opacity = '0'; setTimeout(() => tg.el.remove(), 400); tags.splice(k, 1); }
+      }
+      placeTag(tg, tmp);
+    }
+
+    camera.position.x += (pointer.x * .6 - camera.position.x) * .03;
+    camera.position.y += (-pointer.y * .35 - camera.position.y) * .03;
+    camera.lookAt(0, 0, 0);
+  }
+
+  function frame(now) {
+    if (!running) return;
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    step(dt);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+
+  layout();
+  if (reduced) { step(0.016); renderer.render(scene, camera); }
+  else requestAnimationFrame(t => { last = t; frame(t); });
+
+  const ro = new ResizeObserver(() => { layout(); if (reduced) { step(0); renderer.render(scene, camera); } });
+  ro.observe(canvas);
+  const io = new IntersectionObserver(([e]) => {
+    if (reduced) return;
+    const vis = e.isIntersecting && !document.hidden;
+    if (vis && !running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
+    if (!vis) running = false;
+  });
+  io.observe(canvas);
+  document.addEventListener('visibilitychange', () => {
+    if (reduced) return;
+    if (document.hidden) running = false;
+    else if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
+  });
+}
+
+// ---- layers ----
+// "How it works": stacked wireframe intake layers inside a glass box.
+// Light-mode adaptation of the filtration-analysis reference.
+
+const L_NAMES = ['Capture', 'Classify', 'Reply', 'Book'];
+const L_STEEL = new THREE.Color('#7FA9BD');
+const L_ROSE = new THREE.Color('#C77B8E');
+const L_PALE = new THREE.Color('#B8C6D3');
+
+function initLayers(canvas, { reduced = false } = {}) {
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+  const root = new THREE.Group(); scene.add(root);
+
+  // glass box outline
+  const W = 4, H = 5.6;
+  const box = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(W, H, W)), new THREE.LineBasicMaterial({ color: '#4A5867', transparent: true, opacity: .28 }));
+  root.add(box);
+  const grid = new THREE.GridHelper(W, 16, '#9FB3C3', '#C9D6E1'); grid.position.y = -H / 2; grid.material.transparent = true; grid.material.opacity = .45; root.add(grid);
+
+  // layers
+  const layers = L_NAMES.map((name, i) => {
+    const g = new THREE.PlaneGeometry(W * .92, W * .92, 34, 34); g.rotateX(-Math.PI / 2);
+    const base = g.attributes.position.array.slice();
+    g.setAttribute('color', new THREE.BufferAttribute(new Float32Array(g.attributes.position.count * 3), 3));
+    const m = new THREE.MeshBasicMaterial({ wireframe: true, vertexColors: true, transparent: true, opacity: .35, depthWrite: false });
+    const mesh = new THREE.Mesh(g, m);
+    mesh.position.y = H / 2 - .9 - i * ((H - 1.6) / 3);
+    root.add(mesh);
+    return { mesh, g, base, name, seed: i * 1.37, strength: 0 };
+  });
+
+  // particles falling through the filter
+  const N = 520, pos = new Float32Array(N * 3), col = new Float32Array(N * 3), st = [];
+  for (let i = 0; i < N; i++) { st.push({ x: (Math.random() - .5) * W * .85, z: (Math.random() - .5) * W * .85, y: Math.random() * H - H / 2, v: .25 + Math.random() * .5, glow: 0 }); }
+  const pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(pos, 3)); pg.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  const c = document.createElement('canvas'); c.width = c.height = 32; const cx = c.getContext('2d');
+  cx.fillStyle = '#fff'; cx.beginPath(); cx.arc(16, 16, 14, 0, Math.PI * 2); cx.fill();
+  const tex = new THREE.CanvasTexture(c);
+  const pts = new THREE.Points(pg, new THREE.PointsMaterial({ size: .06, vertexColors: true, map: tex, transparent: true, alphaTest: .4, depthWrite: false }));
+  root.add(pts);
+
+  // HTML labels for layers
+  const stage = canvas.parentElement;
+  const labels = layers.map((l, i) => {
+    const el = document.createElement('div'); el.className = 'tag layer-tag';
+    el.innerHTML = `<i></i><span><b>${i + 1}</b> ${l.name}</span>`; el.style.position = 'absolute';
+    stage.appendChild(el); return el;
+  });
+
+  let active = 0, time = 0, running = true, last = performance.now();
+  const pointer = { x: 0 };
+  window.addEventListener('pointermove', e => { pointer.x = (e.clientX / innerWidth) * 2 - 1; }, { passive: true });
+
+  function layout() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    const dist = w < 600 ? 17 : 14.5;
+    camera.position.set(dist * .62, dist * .32, dist * .72); camera.lookAt(0, -.1, 0);
+  }
+
+  const tmpC = new THREE.Color(), v = new THREE.Vector3();
+  function step(dt) {
+    time += dt;
+    root.rotation.y = Math.sin(time * .12) * .22 + pointer.x * .15;
+    layers.forEach((l, i) => {
+      l.strength += ((i === active ? 1 : 0) - l.strength) * Math.min(dt * 4, 1);
+      const pa = l.g.attributes.position, ca = l.g.attributes.color;
+      const amp = .18 + l.strength * .35;
+      for (let k = 0; k < pa.count; k++) {
+        const x = l.base[k * 3], z = l.base[k * 3 + 2];
+        const r = Math.hypot(x, z);
+        const sag = -Math.exp(-r * r * .35) * amp * 1.4;
+        const n = Math.sin(x * 1.6 + time * .8 + l.seed) * Math.cos(z * 1.3 - time * .6 + l.seed) * amp * .35;
+        const y = sag + n;
+        pa.setY(k, y);
+        const depth = Math.min(Math.max(-y / (amp * 1.5), 0), 1);
+        tmpC.copy(L_PALE).lerp(L_STEEL, .5 + l.strength * .3).lerp(L_ROSE, depth * (.35 + l.strength * .65));
+        ca.setXYZ(k, tmpC.r, tmpC.g, tmpC.b);
+      }
+      pa.needsUpdate = true; ca.needsUpdate = true;
+      l.mesh.material.opacity = .28 + l.strength * .62;
+    });
+    st.forEach((p, i) => {
+      const prevY = p.y;
+      // slow down inside the active layer's band
+      const ly = layers[active].mesh.position.y;
+      const slow = Math.abs(p.y - ly) < .35 ? .35 : 1;
+      p.y -= p.v * dt * slow;
+      if (prevY > ly && p.y <= ly) p.glow = 1;
+      p.glow = Math.max(0, p.glow - dt * .8);
+      if (p.y < -H / 2) { p.y = H / 2; p.x = (Math.random() - .5) * W * .85; p.z = (Math.random() - .5) * W * .85; }
+      pos[i * 3] = p.x; pos[i * 3 + 1] = p.y; pos[i * 3 + 2] = p.z;
+      tmpC.set('#5D7A90').lerp(L_ROSE, p.glow);
+      col[i * 3] = tmpC.r; col[i * 3 + 1] = tmpC.g; col[i * 3 + 2] = tmpC.b;
+    });
+    pg.attributes.position.needsUpdate = true; pg.attributes.color.needsUpdate = true;
+
+    labels.forEach((el, i) => {
+      v.set(W / 2, layers[i].mesh.position.y, W / 2).applyMatrix4(root.matrixWorld).project(camera);
+      const x = (v.x * .5 + .5) * canvas.clientWidth, y = (-v.y * .5 + .5) * canvas.clientHeight;
+      el.style.transform = `translate(${x + 8}px, ${y - 12}px)`;
+      el.classList.toggle('done', i === active);
+      el.style.opacity = i === active ? '1' : '.6';
+    });
+  }
+
+  function frame(now) {
+    if (!running) return;
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    step(dt); renderer.render(scene, camera); requestAnimationFrame(frame);
+  }
+
+  layout();
+  const ro = new ResizeObserver(() => { layout(); if (reduced) { step(0); renderer.render(scene, camera); } }); ro.observe(canvas);
+  if (reduced) { root.updateMatrixWorld(); step(.016); renderer.render(scene, camera); running = false; }
+  else {
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
+      if (!e.isIntersecting) running = false;
+    });
+    io.observe(canvas);
+    requestAnimationFrame(frame);
+  }
+
+  return {
+    setActive(i) {
+      active = Math.max(0, Math.min(L_NAMES.length - 1, i));
+      if (reduced) { step(1); renderer.render(scene, camera); }
+    },
+  };
+}
+
+// ---- page ----
+const SUPABASE_URL = 'https://wtcfivetjygazowzanes.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_BIB2_wm-wiqhJihQAkbxpA_89NwAETF'; // publishable (insert-only via RLS)
+
+document.documentElement.classList.add('js');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function webglOK() {
+  try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; }
+}
+
+// 3D scenes (progressive enhancement)
+let layersApi = null;
+if (webglOK()) {
+  try { initHero(document.getElementById('hero-canvas'), document.getElementById('hero-tags'), { reduced }); }
+  catch (err) { console.warn('hero scene unavailable', err); }
+  const stage = document.getElementById('layers-canvas');
+  const io = new IntersectionObserver(async ([e], obs) => {
+    if (!e.isIntersecting) return; obs.disconnect();
+    try { layersApi = initLayers(stage, { reduced }); layersApi.setActive(currentStep); }
+    catch (err) { console.warn('layers scene unavailable', err); }
+  }, { rootMargin: '300px' });
+  io.observe(stage);
+}
+
+// timeline reveal
+const tl = document.querySelector('.timeline');
+if (tl) {
+  if (reduced) tl.classList.add('in');
+  else new IntersectionObserver(([e], o) => { if (e.isIntersecting) { tl.classList.add('in'); o.disconnect(); } }, { threshold: .4 }).observe(tl);
+}
+
+// steps -> active layer
+let currentStep = 0;
+const steps = [...document.querySelectorAll('.steps li')];
+steps[0]?.classList.add('active');
+const stepIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    currentStep = Number(e.target.dataset.step);
+    steps.forEach(s => s.classList.toggle('active', s === e.target));
+    layersApi?.setActive(currentStep);
+  });
+}, { rootMargin: '-45% 0px -45% 0px' });
+steps.forEach(s => stepIO.observe(s));
+
+// response-time test form -> Supabase (Homebase)
+const form = document.getElementById('test-form');
+const status = form.querySelector('.form-status');
+const email = form.querySelector('#f-email');
+const emailErr = document.getElementById('f-email-err');
+const firm = form.querySelector('#f-firm');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  status.className = 'form-status'; status.textContent = '';
+  const fd = new FormData(form);
+  if (fd.get('company_url')) return; // bot trap
+  let ok = true;
+  if (!firm.value.trim()) { firm.setAttribute('aria-invalid', 'true'); ok = false; } else firm.removeAttribute('aria-invalid');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) { email.setAttribute('aria-invalid', 'true'); email.setAttribute('aria-describedby', 'f-email-err'); emailErr.hidden = false; ok = false; }
+  else { email.removeAttribute('aria-invalid'); emailErr.hidden = true; }
+  if (!ok) { status.className = 'form-status err'; status.textContent = 'Add your firm name and a work email to request the test.'; (firm.value.trim() ? email : firm).focus(); return; }
+
+  const btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Requesting…';
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/test_requests`, {
+      method: 'POST',
+      headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ firm: firm.value.trim(), website: fd.get('website')?.trim() || null, name: fd.get('name')?.trim() || null, email: email.value.trim() }),
+    });
+    if (!r.ok) throw new Error(String(r.status));
+    form.reset();
+    status.className = 'form-status ok';
+    status.textContent = 'Test requested. Your report will arrive by email within two business days.';
+    btn.textContent = 'Requested';
+  } catch {
+    status.className = 'form-status err';
+    status.innerHTML = 'That didn\'t go through. Email <a href="mailto:info@localforge.tech">info@localforge.tech</a> and we\'ll set up the test by hand.';
+    btn.disabled = false; btn.textContent = 'Request my test';
+  }
+});
+
+</script>
+</body>
+</html>
