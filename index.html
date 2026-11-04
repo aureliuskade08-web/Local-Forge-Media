@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Local Forge Media | Websites and ads for local businesses and boutiques</title>
-<meta name="description" content="Local Forge Media builds custom websites for $1,000 and runs your Meta ads, Google ads, video sales letters and ad creatives for $3,000 a month.">
+<meta name="description" content="Local Forge Media builds custom websites for $1,000, drives traffic to them with Meta and Facebook ads for $3,000 a month, and adds an AI receptionist and custom ChatGPT for $5,000 a month.">
 <meta name="theme-color" content="#cfcde8">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Local Forge Media">
@@ -149,7 +149,7 @@ body{margin:0;font-family:"Outfit",system-ui,sans-serif;color:var(--ink);backgro
 .h2{text-wrap:balance}
 .hatch{flex:none;width:12px;height:12px;margin-top:.5em;background:repeating-linear-gradient(135deg,var(--ink) 0 1.5px,transparent 1.5px 4px);border:1px solid var(--ink)}
 .rule{border-top:1px solid rgba(27,24,51,.22)}
-.price{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.28em;font-weight:800;letter-spacing:-.05em;line-height:.86;font-size:clamp(64px,8.6vw,128px);margin:0}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.28em;row-gap:.22em;font-weight:800;letter-spacing:-.05em;line-height:.86;font-size:clamp(64px,8.6vw,128px);margin:0}
 .price-sub{font-weight:200;font-size:clamp(18px,1.8vw,26px);letter-spacing:.01em}
 .hud-label{font-family:var(--font-hud);font-weight:500;font-size:18px;letter-spacing:.14em;color:var(--ink)}
 .dotgrid{display:grid;grid-template-columns:repeat(3,7px);gap:7px}
@@ -206,7 +206,8 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   <nav class="flex items-center gap-7" aria-label="Main">
     <a class="navlink hidden md:inline" href="#who">Who it's for</a>
     <a class="navlink hidden md:inline" href="#website">The Website</a>
-    <a class="navlink hidden md:inline" href="#growth">The Growth Studio</a>
+    <a class="navlink hidden md:inline" href="#growth">Meta Ads</a>
+    <a class="navlink hidden md:inline" href="#ai">The AI Team</a>
     <a class="btn btn-solid !min-h-11 !px-5 !text-[15px]" href="#start">Start a project</a>
   </nav>
 </header>
@@ -214,7 +215,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <!-- Bottom HUD: chapter readout and sound control -->
 <div class="hud hud-bottom">
   <div class="chapter" aria-hidden="true">
-    <div class="row"><span id="chapNum">01</span><span class="count">/ 06</span><span id="chapName">Intro</span></div>
+    <div class="row"><span id="chapNum">01</span><span class="count">/ 07</span><span id="chapName">Intro</span></div>
     <div class="bar"><i id="progress"></i></div>
   </div>
   <button id="sound" class="soundbtn" type="button" aria-pressed="false" aria-label="Sound">
@@ -260,11 +261,11 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       <div class="shell">
         <div class="max-w-[760px]">
           <p class="m-0 font-extrabold tracking-[-.035em] leading-[.98] text-[clamp(34px,4.5vw,66px)] text-balance">Websites that look the part.<span class="block font-extralight">Ads that bring people in.</span></p>
-          <p class="lead">Local Forge Media builds your website, then runs the ads, creatives and video sales letters that send customers to it.</p>
+          <p class="lead">Local Forge Media builds your website, sends customers to it with Meta ads, and answers every one of them with AI.</p>
           <div class="mt-9 flex flex-wrap gap-3">
             <a class="btn btn-solid" href="#start">Start a project
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-            <a class="btn btn-ghost" href="#website">See the two plans</a>
+            <a class="btn btn-ghost" href="#website">See the plans</a>
           </div>
         </div>
       </div>
@@ -322,27 +323,46 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   </div>
 </section>
 
-<!-- ============ 04 THE GROWTH STUDIO ============ -->
+<!-- ============ 04 META ADS ============ -->
 <section id="growth" class="chapter-sec m-top" aria-labelledby="growth-h">
   <div class="shell">
     <div class="focus ml-auto md:max-w-[600px] panel flat">
-      <p class="hud-label m-0 mb-4">The Growth Studio</p>
+      <p class="hud-label m-0 mb-4">Meta Ads</p>
       <p class="price" id="growth-h">$3,000 <span class="price-sub">per month</span></p>
-      <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">A complete marketing department for one flat monthly price.</h3>
+      <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">Facebook and Instagram ads that drive traffic to your website.</h3>
       <ul class="list-none p-0 mt-6 mb-0">
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Meta ads</b><span class="block text-[16px] text-ink-soft mt-1">Facebook and Instagram campaigns, built and managed for you.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Google ads</b><span class="block text-[16px] text-ink-soft mt-1">Search ads that meet people while they look for what you sell.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Video sales letters</b><span class="block text-[16px] text-ink-soft mt-1">Written for your offer, in your voice, to ask for the sale.</span></div></li>
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Meta ad campaigns</b><span class="block text-[16px] text-ink-soft mt-1">Facebook and Instagram campaigns, built, launched and managed for you.</span></div></li>
         <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Ad creatives</b><span class="block text-[16px] text-ink-soft mt-1">Images, short video and copy, made fresh for every campaign.</span></div></li>
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Traffic to your site</b><span class="block text-[16px] text-ink-soft mt-1">Every ad points to your website, so visitors turn into enquiries.</span></div></li>
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Tested and tuned</b><span class="block text-[16px] text-ink-soft mt-1">We watch the numbers, cut what slips and scale what works.</span></div></li>
       </ul>
       <p class="mt-6 mb-0 text-[17px] text-ink-soft">Everything is created in-house, so you never juggle freelancers.</p>
-      <a class="btn btn-solid mt-7" href="#start" data-plan="The Growth Studio, $3,000 a month">Start growing
+      <a class="btn btn-solid mt-7" href="#start" data-plan="Meta Ads, $3,000 a month">Start driving traffic
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ============ 05 HOW IT WORKS ============ -->
+<!-- ============ 05 THE AI TEAM ============ -->
+<section id="ai" class="chapter-sec m-top" aria-labelledby="ai-h">
+  <div class="shell">
+    <div class="focus md:max-w-[600px] panel flat">
+      <p class="hud-label m-0 mb-4">The AI Team</p>
+      <p class="price" id="ai-h">$5,000 <span class="price-sub">per month</span></p>
+      <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">A receptionist that never clocks out, and a ChatGPT that knows your business.</h3>
+      <ul class="list-none p-0 mt-6 mb-0">
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">AI receptionist</b><span class="block text-[16px] text-ink-soft mt-1">Answers calls and messages around the clock, takes details and books appointments.</span></div></li>
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Custom ChatGPT</b><span class="block text-[16px] text-ink-soft mt-1">Trained on your services, prices and policies, so it answers in your voice.</span></div></li>
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Built around you</b><span class="block text-[16px] text-ink-soft mt-1">Set up, tested and tuned by us before it ever talks to a customer.</span></div></li>
+        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Hand-offs that matter</b><span class="block text-[16px] text-ink-soft mt-1">Hot leads and urgent requests go straight to you.</span></div></li>
+      </ul>
+      <a class="btn btn-solid mt-7" href="#start" data-plan="The AI Team, $5,000 a month">Add the AI team
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 HOW IT WORKS ============ -->
 <section id="how" class="chapter-sec m-top" aria-labelledby="how-h">
   <div class="shell">
     <div class="focus panel flat">
@@ -360,15 +380,15 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         </li>
         <li class="rule pt-5">
           <span class="hud-label">03</span>
-          <h3 class="mt-3 mb-0 text-2xl font-bold tracking-tight">We bring in traffic</h3>
-          <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">On the Growth Studio, ads, creatives and sales videos are made, launched and managed every month.</p>
+          <h3 class="mt-3 mb-0 text-2xl font-bold tracking-tight">We bring people in</h3>
+          <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">Meta ads send traffic to your site every month, and the AI team answers each caller and visitor.</p>
         </li>
       </ol>
     </div>
   </div>
 </section>
 
-<!-- ============ 06 START: FORM ============ -->
+<!-- ============ 07 START: FORM ============ -->
 <section id="start" class="chapter-sec !items-start" aria-labelledby="start-h">
   <div class="shell w-full">
     <div class="grid gap-10 md:grid-cols-2 md:gap-16 items-start">
@@ -389,8 +409,9 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
             <select class="input" name="plan" id="plan">
               <option>Not sure yet</option>
               <option>The Website, $1,000</option>
-              <option>The Growth Studio, $3,000 a month</option>
-              <option>Both</option>
+              <option>Meta Ads, $3,000 a month</option>
+              <option>The AI Team, $5,000 a month</option>
+              <option>More than one</option>
             </select>
           </label>
           <label class="field"><span>What are you hoping to achieve?</span><textarea class="input" name="message" rows="4"></textarea></label>
@@ -420,6 +441,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
    ========================================================================== */
 const FORMSPREE_ID = "mykboqqg";      // your Formspree form ID (https://formspree.io/f/mykboqqg)
 const AUDIO_VOLUME = 0.85;              // 0 to 1
+const MODEL_URL = "assets/hammer/scene.gltf"; // 3D hammer files (also embedded in this page as a backup)
 
 /* ========================================================================== */
 const $  = (s, r = document) => r.querySelector(s);
@@ -569,7 +591,7 @@ enterBtn.focus({ preventScroll: true });
 
 /* ------------------------------------------------- SCROLL TIMELINE DATA --- */
 // Each anchor ties a scroll position to a scene state. The scene eases between neighbours.
-const CHAPTERS = ["Intro", "Who it's for", "The Website", "The Growth Studio", "How it works", "Start"];
+const CHAPTERS = ["Intro", "Who it's for", "The Website", "Meta Ads", "The AI Team", "How it works", "Start"];
 const ANCHORS = [
   { el: "hero",    at: 0,        s: 0, ch: 0 },   // hammer raised
   { el: "hero",    at: 0.62,     s: 1, ch: 0 },   // the strike
@@ -577,19 +599,21 @@ const ANCHORS = [
   { el: "who",     at: "center", s: 3, ch: 1 },
   { el: "website", at: "center", s: 4, ch: 2 },
   { el: "growth",  at: "center", s: 5, ch: 3 },
-  { el: "how",     at: "center", s: 6, ch: 4 },
-  { el: "start",   at: "end",    s: 7, ch: 5 },
+  { el: "ai",      at: "center", s: 6, ch: 4 },
+  { el: "how",     at: "center", s: 7, ch: 5 },
+  { el: "start",   at: "end",    s: 8, ch: 6 },
 ];
 // ox/oy: orb position as a fraction of half-screen. os: orb size. amp/fq: surface noise. sx/sy/sz: squash.
 // hx/hy: hammer pivot offset from orb (in orb radii). ha: hammer angle (deg). hs: hammer scale.
 const STATES = [
   // my/mos/mhs are the phone versions of oy/os/hs (the orb parks at the top of the screen so text can sit below it)
-  { ox: 0.00,  oy: 0.02,  my: 0.02,  os: 0.56, mos: 0.62, amp: 0.10, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.00, iri: 0.95, hx: -2.1, hy: 1.1, ha: 100, hs: 1.0, mhs: 1, bgA: "#dcd9f1", bgB: "#c3c0e4" },
+  { ox: 0.00,  oy: 0.02,  my: 0.02,  os: 0.56, mos: 0.62, amp: 0.10, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.00, iri: 0.95, hx: -2.2, hy: -0.75, ha: 46, hs: 1.0, mhs: 1, bgA: "#dcd9f1", bgB: "#c3c0e4" },
   { ox: 0.30,  oy: -0.02, my: 0.00,  os: 0.58, mos: 0.62, amp: 0.22, fq: 1.4, sx: 1.10, sy: 0.82, sz: 1.05, hue: 0.10, iri: 1.00, hx: -2.1, hy: 1.1, ha: -8, hs: 1.0, mhs: 1, bgA: "#e2d6f2", bgB: "#c6bfe6" },
   { ox: 0.34,  oy: 0.00,  my: 0.12,  os: 0.58, mos: 0.58, amp: 0.14, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.16, iri: 0.95, hx: -2.1, hy: 1.1, ha: 34, hs: 1.0, mhs: 1, bgA: "#dcd9f1", bgB: "#c3c0e4" },
   { ox: -0.34, oy: 0.00,  my: 0.50,  os: 0.50, mos: 0.34, amp: 0.16, fq: 1.0, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.26, iri: 0.95, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#dedaea", bgB: "#bdb8d4" },
   { ox: 0.34,  oy: 0.00,  my: 0.50,  os: 0.54, mos: 0.36, amp: 0.05, fq: 0.9, sx: 1.30, sy: 0.92, sz: 0.36, hue: 0.45, iri: 0.90, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#d9dcf2", bgB: "#b9c0e6" },
   { ox: -0.42, oy: 0.00,  my: 0.50,  os: 0.44, mos: 0.30, amp: 0.24, fq: 1.7, sx: 0.80, sy: 1.26, sz: 0.80, hue: 0.72, iri: 1.00, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#e6d6ee", bgB: "#c9b8e2" },
+  { ox: 0.42,  oy: 0.00,  my: 0.50,  os: 0.46, mos: 0.32, amp: 0.18, fq: 1.5, sx: 1.12, sy: 0.90, sz: 1.00, hue: 0.60, iri: 1.00, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#dbe3f3", bgB: "#bcc8e8" },
   { ox: 0.52,  oy: 0.64,  my: 0.52,  os: 0.27, mos: 0.26, amp: 0.12, fq: 1.3, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.90, iri: 0.95, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#d6e0f0", bgB: "#bdc6e8" },
   { ox: -0.56, oy: -0.02, my: 0.52,  os: 0.36, mos: 0.26, amp: 0.10, fq: 1.0, sx: 1.00, sy: 1.00, sz: 1.00, hue: 1.00, iri: 0.95, hx: 1.5, hy: -1.1, ha: 98, hs: 0.95, mhs: 0, bgA: "#dcd9f1", bgB: "#c3c0e4" },
 ];
@@ -820,25 +844,33 @@ async function build3D() {
   /* ---- the hammer (your GLB data, embedded below) ---- */
   const hammerPivot = new THREE.Group(); rig.add(hammerPivot);
   let hammerReady = false;
-  await new Promise((resolve) => {
-    new GLTFLoader().parse($("#model-data").textContent, "", (gltf) => {
-      const model = gltf.scene;
-      model.traverse((o) => {
-        if (!o.isMesh) return;
-        const m = o.material;
-        o.material = new THREE.MeshPhysicalMaterial({
-          map: m.map, metalnessMap: m.metalnessMap, roughnessMap: m.roughnessMap, metalness: 1, roughness: 1,
-          iridescence: 0.55, iridescenceIOR: 1.6, iridescenceThicknessRange: [180, 520], envMapIntensity: 1.5,
-        });
+  const loader = new GLTFLoader();
+  const setupModel = (gltf) => {
+    const model = gltf.scene;
+    model.traverse((o) => {
+      if (!o.isMesh) return;
+      const m = o.material;
+      o.material = new THREE.MeshPhysicalMaterial({
+        map: m.map, metalnessMap: m.metalnessMap, roughnessMap: m.roughnessMap, metalness: 1, roughness: 1,
+        iridescence: 0.55, iridescenceIOR: 1.6, iridescenceThicknessRange: [180, 520], envMapIntensity: 1.5,
       });
-      // The source model lies along +X (handle at -X, head at +X). Normalise to length 1 with the handle end at the origin.
-      const box = new THREE.Box3().setFromObject(model), len = box.max.x - box.min.x;
-      const holder = new THREE.Group(); holder.add(model);
-      model.position.x -= box.min.x; model.position.y -= (box.min.y + box.max.y) / 2; model.position.z -= (box.min.z + box.max.z) / 2;
-      holder.scale.setScalar(1 / len);
-      const flip = new THREE.Group(); flip.rotation.x = Math.PI / 2; flip.add(holder); // head axis -> screen Y, thickness -> toward camera
-      hammerPivot.add(flip); hammerReady = true; resolve();
-    }, (e) => { console.warn("Hammer model failed", e); resolve(); });
+    });
+    // The source model lies along +X (handle at -X, head at +X). Normalise to length 1 with the handle end at the origin.
+    const box = new THREE.Box3().setFromObject(model), len = box.max.x - box.min.x;
+    const holder = new THREE.Group(); holder.add(model);
+    model.position.x -= box.min.x; model.position.y -= (box.min.y + box.max.y) / 2; model.position.z -= (box.min.z + box.max.z) / 2;
+    holder.scale.setScalar(1 / len);
+    const flip = new THREE.Group(); flip.rotation.x = Math.PI / 2; flip.add(holder); // head axis -> screen Y, thickness -> toward camera
+    hammerPivot.add(flip); hammerReady = true;
+  };
+  await new Promise((resolve) => {
+    const embedded = () => {
+      try {
+        loader.parse($("#model-data").textContent, "", (g) => { setupModel(g); resolve(); }, (e) => { console.warn("Hammer model failed", e); resolve(); });
+      } catch (e) { console.warn("Hammer model failed", e); resolve(); }
+    };
+    // 1) the model files in /assets/hammer (used when the site is hosted)  2) the copy embedded in this page (used when opened as a plain file)
+    loader.load(MODEL_URL, (g) => { setupModel(g); resolve(); }, undefined, embedded);
   });
 
   /* ---- sizing ---- */
