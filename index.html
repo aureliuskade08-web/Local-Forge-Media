@@ -440,7 +440,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
    SETTINGS: edit these two lines
    ========================================================================== */
 const FORMSPREE_ID = "mykboqqg";      // your Formspree form ID (https://formspree.io/f/mykboqqg)
-const AUDIO_VOLUME = 0.85;              // 0 to 1
+const AUDIO_VOLUME = 0.62;              // 0 to 1
 const MODEL_URL = "assets/hammer/scene.gltf"; // 3D hammer files (also embedded in this page as a backup)
 
 /* ========================================================================== */
@@ -822,7 +822,7 @@ async function build3D() {
       }`,
   });
   const bGeo = new THREE.SphereGeometry(1, 36, 26);
-  const N_AMB = small ? 46 : 90, N_BURST = small ? 30 : 56;
+  const N_AMB = small ? 32 : 62, N_BURST = small ? 30 : 56;
   const ambient = new THREE.InstancedMesh(bGeo.clone(), bubbleMat, N_AMB);
   const burst = new THREE.InstancedMesh(bGeo.clone(), bubbleMat, N_BURST);
   for (const m of [ambient, burst]) {
@@ -843,17 +843,31 @@ async function build3D() {
 
   /* ---- the hammer (your GLB data, embedded below) ---- */
   const hammerPivot = new THREE.Group(); rig.add(hammerPivot);
-  let hammerReady = false;
+  let hammerReady = false, hammerMat = null;
+  const hammerHue = { value: 0 }, hammerT = { value: 0 };
   const loader = new GLTFLoader();
   const setupModel = (gltf) => {
     const model = gltf.scene;
     model.traverse((o) => {
       if (!o.isMesh) return;
-      const m = o.material;
-      o.material = new THREE.MeshPhysicalMaterial({
-        map: m.map, metalnessMap: m.metalnessMap, roughnessMap: m.roughnessMap, metalness: 1, roughness: 1,
-        iridescence: 0.55, iridescenceIOR: 1.6, iridescenceThicknessRange: [180, 520], envMapIntensity: 1.5,
+      // Pearlescent thin-film finish, same palette as the orb (the model's own wood/steel texture is dropped)
+      o.material = hammerMat = new THREE.MeshPhysicalMaterial({
+        color: 0xd9d0f2, metalness: 0.62, roughness: 0.16,
+        clearcoat: 1, clearcoatRoughness: 0.06, iridescence: 0.7, iridescenceIOR: 1.9, iridescenceThicknessRange: [300, 900], envMapIntensity: 1.9,
       });
+      hammerMat.onBeforeCompile = (sh) => {
+        sh.uniforms.uHue = hammerHue; sh.uniforms.uT = hammerT;
+        sh.fragmentShader = sh.fragmentShader
+          .replace("void main() {", "uniform float uHue; uniform float uT;\nvoid main() {")
+          .replace("#include <dithering_fragment>", `
+            float ndvH = abs(dot(normalize(vNormal), normalize(vViewPosition)));
+            float filmH = 0.2 + ndvH * 1.0 + vNormal.y * 0.35 + vViewPosition.x * 0.16 - vViewPosition.y * 0.2 + uHue * 0.5 + sin(vViewPosition.x * 0.9 + uT * 0.2) * 0.05;
+            float fa = sin(6.2831 * filmH) * 0.5 + 0.5, fb = sin(6.2831 * filmH + 2.1) * 0.5 + 0.5;
+            vec3 pearl = mix(mix(vec3(1.0, 0.76, 0.92), vec3(0.72, 0.70, 1.0), fa), vec3(0.66, 0.93, 0.98), fb * 0.7);
+            float rim = pow(1.0 - ndvH, 1.6);
+            gl_FragColor.rgb = mix(gl_FragColor.rgb, pearl * (0.7 + 0.5 * dot(gl_FragColor.rgb, vec3(0.333))), 0.46 + 0.5 * rim);
+            #include <dithering_fragment>`);
+      };
     });
     // The source model lies along +X (handle at -X, head at +X). Normalise to length 1 with the handle end at the origin.
     const box = new THREE.Box3().setFromObject(model), len = box.max.x - box.min.x;
@@ -931,6 +945,7 @@ async function build3D() {
     hammerPivot.rotation.z = THREE.MathUtils.degToRad(s.ha + idle);
     hammerPivot.scale.setScalar(Math.max(0.0001, (s.os * ref) * Lh * s.hs));
     hammerPivot.visible = hammerReady;
+    hammerHue.value = s.hue * 0.8; hammerT.value = t; // film shifts colour with the orb
 
     // ambient bubbles
     for (let i = 0; i < N_AMB; i++) {
