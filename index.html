@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Local Forge Media | Websites and ads for local businesses and boutiques</title>
-<meta name="description" content="Local Forge Media builds custom websites for $1,000, drives traffic to them with Meta and Facebook ads for $3,000 a month, and adds an AI receptionist and custom ChatGPT for $5,000 a month.">
+<title>Local Forge Media | Custom web design that smokes the competition</title>
+<meta name="description" content="Local Forge Media is a full-scale web design company. We work with any niche to build custom, stunning websites that smoke the competition. Websites from $1,000.">
 <meta name="theme-color" content="#cfcde8">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Local Forge Media">
-<meta property="og:description" content="Websites that look the part. Ads that bring people in.">
+<meta property="og:description" content="Stop blending in. Custom websites that smoke the competition.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f7a8ec'/%3E%3Cstop offset='.5' stop-color='%238a8cf0'/%3E%3Cstop offset='1' stop-color='%237fe8d6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3C/svg%3E">
 
@@ -146,6 +146,63 @@ body{margin:0;font-family:"Outfit",system-ui,sans-serif;color:var(--ink);backgro
 .dotgrid{display:grid;grid-template-columns:repeat(3,7px);gap:7px}
 .dotgrid i{width:7px;height:7px;border-radius:50%;background:var(--ink)}
 
+/* ---------- The 5% readout + dot grid ---------- */
+.readout{display:flex;align-items:center;gap:18px}
+.readout .num{font-weight:800;letter-spacing:-.05em;line-height:.9;font-size:clamp(54px,6vw,92px);font-variant-numeric:tabular-nums;min-width:2.4ch}
+.readout .of{font-family:var(--font-hud);font-weight:500;font-size:19px;letter-spacing:.1em;line-height:1.25;color:var(--ink-soft)}
+.dots-wrap{width:100%;max-width:560px;margin-inline:auto;padding:16px}
+.dots-wrap canvas{display:block;width:100%;aspect-ratio:1}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- The toolbox: live demo tiles ---------- */
+.lab{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1023px){.lab{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:639px){.lab{grid-template-columns:minmax(0,1fr)}}
+.tile{display:flex;flex-direction:column;overflow:hidden;border-radius:26px;background:rgba(255,255,255,.42);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(60,45,130,.12);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(60,45,130,.2)}
+.stage{position:relative;height:156px;display:grid;place-items:center;touch-action:pan-y}
+.cap{padding:13px 20px 16px;border-top:1px solid rgba(27,24,51,.14);display:flex;flex-direction:column;gap:3px}
+.cap b{font-size:18px;letter-spacing:-.01em}
+.cap em{font-style:normal;font-family:var(--font-hud);font-weight:500;font-size:14px;letter-spacing:.12em;color:var(--ink-soft)}
+.ring{--p:0;position:relative;width:118px;height:118px;border-radius:50%;display:grid;place-items:center;
+  background:conic-gradient(#f3a6e3,#9a8cf5 calc(var(--p)*.5%),#8fe3ee calc(var(--p)*1%),rgba(27,24,51,.1) 0)}
+.ring::before{content:"";position:absolute;inset:11px;border-radius:50%;background:#ebe8f6}
+.ring span{position:relative;font-weight:800;font-size:28px;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.live{--a:0deg;position:relative;width:118px;height:118px;border-radius:30px;display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:-.02em;background:rgba(255,255,255,.55)}
+.live::before,.live::after{content:"";position:absolute;inset:-2px;border-radius:inherit;padding:3px;
+  background:conic-gradient(from var(--a),#ff9bd6,#8f8cff,#7fe8d6,#ffe3a0,#ff9bd6);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:spin 4.5s linear infinite}
+.live::after{inset:-10px;padding:12px;filter:blur(16px);opacity:.6}
+.tilt-stage{perspective:640px}
+.tilt{--gx:50%;--gy:50%;position:relative;width:164px;height:106px;border-radius:20px;transform-style:preserve-3d;transition:transform .25s ease-out;
+  background:linear-gradient(135deg,#f6d6f0,#c9c2f7 50%,#bfeaf2);box-shadow:0 24px 40px rgba(60,45,130,.28)}
+.tilt::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(110px circle at var(--gx) var(--gy),rgba(255,255,255,.85),transparent 62%)}
+.tilt i{position:absolute;left:16px;top:16px;width:42px;height:42px;border-radius:50%;background:var(--ink);transform:translateZ(46px);box-shadow:0 12px 20px rgba(27,24,51,.35)}
+.tilt span{position:absolute;right:14px;bottom:12px;font-family:var(--font-hud);font-weight:500;font-size:16px;letter-spacing:.14em;transform:translateZ(26px)}
+.type-stage{align-content:center;gap:8px}
+.type{font-size:68px;line-height:1;letter-spacing:-.04em;font-weight:520}
+.type-stage input,.hue-stage input{width:72%;accent-color:var(--ink)}
+.lens-stage{overflow:hidden}
+.lbg{position:absolute;inset:0;background:radial-gradient(60% 80% at 18% 30%,#f3a6e3,transparent 70%),radial-gradient(60% 80% at 82% 72%,#8fe3ee,transparent 70%),radial-gradient(50% 60% at 62% 18%,#f6d08f,transparent 70%)}
+.lens-stage .word{position:relative;font-weight:800;font-size:60px;letter-spacing:-.04em}
+.lens{position:absolute;left:0;top:0;width:92px;height:92px;border-radius:50%;pointer-events:none;will-change:transform;
+  -webkit-backdrop-filter:blur(7px) saturate(1.7);backdrop-filter:blur(7px) saturate(1.7);background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.9);
+  box-shadow:inset 0 0 22px rgba(255,255,255,.6),0 10px 30px rgba(60,45,130,.25);animation:lensdrift 6s ease-in-out infinite alternate}
+@keyframes lensdrift{from{transform:translate(40px,36px)}to{transform:translate(190px,40px)}}
+.hue-stage{--h:300;align-content:center;gap:14px}
+.sw{display:flex;gap:8px}
+.sw i{width:40px;height:84px;border-radius:14px;background:hsl(calc(var(--h) + var(--o)*34) 70% 80%);background:oklch(.84 .11 calc(var(--h) + var(--o)*34));box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+
+/* ---------- Niche marquee ---------- */
+.marq{overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.marq-track{display:inline-flex;align-items:center;gap:.5em;font-weight:800;letter-spacing:-.04em;line-height:1.05;font-size:clamp(46px,8vw,124px);animation:marq 52s linear infinite;will-change:transform}
+.marq-track .hatch{width:.2em;height:.2em;margin:0 .15em;flex:none}
+.marq.rev .marq-track{animation-direction:reverse}
+.marq.outline .marq-track span{font-weight:200}
+.marq:hover .marq-track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+
 /* ---------- Form ---------- */
 .field{display:block;margin-bottom:22px}
 .field>span{display:block;font-size:14px;font-weight:600;margin-bottom:6px;letter-spacing:.01em}
@@ -174,7 +231,9 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .cta-play::before{animation:none}
+  .cta-play::before,.live::before,.live::after,.lens{animation:none}
+  .marq{-webkit-mask-image:none;mask-image:none}
+  .marq-track{animation:none;white-space:normal;flex-wrap:wrap;font-size:clamp(32px,6vw,64px)}
   .hero-title-wrap,.scroll-hint,.hud-top,.hud-bottom{transition:none}
 }
 </style>
@@ -195,10 +254,10 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <header class="hud hud-top">
   <a href="#hero" class="wordmark" aria-label="Local Forge Media, back to top"><i class="mark"></i><b>Local Forge</b><span>MEDIA</span></a>
   <nav class="flex items-center gap-7" aria-label="Main">
-    <a class="navlink hidden md:inline" href="#who">Who it's for</a>
+    <a class="navlink hidden md:inline" href="#lab">The Toolbox</a>
+    <a class="navlink hidden md:inline" href="#niche">Any Niche</a>
     <a class="navlink hidden md:inline" href="#website">The Website</a>
-    <a class="navlink hidden md:inline" href="#growth">Meta Ads</a>
-    <a class="navlink hidden md:inline" href="#ai">The AI Team</a>
+    <a class="navlink hidden md:inline" href="#grow">Growth</a>
     <a class="btn btn-solid !min-h-11 !px-5 !text-[15px]" href="#start">Start a project</a>
   </nav>
 </header>
@@ -220,7 +279,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   </div>
   <div class="gate-inner">
     <h2 class="gate-title"><span class="a">Local Forge</span><span class="b">MEDIA</span></h2>
-    <p class="gate-sub">Websites and ads for businesses that want to be found.</p>
+    <p class="gate-sub">Custom websites that smoke the competition.</p>
     <button id="enter" class="cta-play" type="button">
       <span class="disc"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
       <span>Enter</span>
@@ -244,12 +303,12 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
     <div id="heroTag" class="absolute inset-0 flex items-center px-0 pointer-events-none" style="opacity:0">
       <div class="shell">
         <div class="max-w-[760px]">
-          <p class="m-0 font-extrabold tracking-[-.035em] leading-[.98] text-[clamp(34px,4.5vw,66px)] text-balance">Websites that look the part.<span class="block font-extralight">Ads that bring people in.</span></p>
-          <p class="lead">Local Forge Media builds your website, sends customers to it with Meta ads, and answers every one of them with AI.</p>
+          <p class="m-0 font-extrabold tracking-[-.035em] leading-[.98] text-[clamp(34px,4.5vw,66px)] text-balance">Stop blending in.<span class="block font-extralight">Websites that smoke the competition.</span></p>
+          <p class="lead" style="max-width:26em">Local Forge Media is a full-scale web design company. We work with any niche to build custom, stunning websites that actually command attention.</p>
           <div class="mt-9 flex flex-wrap gap-3">
             <a class="btn btn-solid" href="#start">Start a project
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-            <a class="btn btn-ghost" href="#website">See the plans</a>
+            <a class="btn btn-ghost" href="#five">See what we do differently</a>
           </div>
         </div>
       </div>
@@ -262,112 +321,143 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   </div>
 </section>
 
-<!-- ============ 02 WHO IT'S FOR ============ -->
-<section id="who" class="chapter-sec m-top" aria-labelledby="who-h">
-  <div class="shell">
-    <div class="focus ml-auto md:max-w-[600px] panel flat">
-      <h2 id="who-h" class="h2">Made for any business.<span class="block light">Sharpened for boutiques.</span></h2>
-      <p class="lead">Customers decide in a few seconds, and they decide on your website first. We make that first look count, then fill it with the right people.</p>
-      <div class="mt-10">
-        <div class="rule py-6 flex gap-4">
-          <i class="hatch" aria-hidden="true"></i>
-          <div>
-            <h3 class="m-0 text-2xl font-bold tracking-tight">Local businesses</h3>
-            <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">Contractors, clinics, restaurants and studios. Clear pages that say what you do, where, and how to book, backed by ads that reach people nearby.</p>
-          </div>
+<!-- ============ 02 THE 5% (fun fact + 3,600 dots) ============ -->
+<section id="five" class="chapter-sec m-top" aria-labelledby="five-h">
+  <div class="shell w-full">
+    <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+      <div class="focus">
+        <p class="hud-label m-0 mb-4">Fun fact</p>
+        <h2 id="five-h" class="h2">Modern code has over 3,600 design tools built in.<span class="block light">Most websites use less than 5%.</span></h2>
+        <p class="lead">That's why so many sites look like the same template. We tap into the full power of modern design to build you a custom website that actually commands attention.</p>
+        <div class="readout mt-9" aria-hidden="true">
+          <span class="num" id="toolCount">180</span>
+          <span class="of"><span id="toolLabel">A typical template uses</span><br>of 3,600 tools</span>
         </div>
-        <div class="rule py-6 flex gap-4">
-          <i class="hatch" aria-hidden="true"></i>
-          <div>
-            <h3 class="m-0 text-2xl font-bold tracking-tight">Boutique stores</h3>
-            <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">Product-first design that feels like stepping into your shop, with campaigns built around every drop, sale and season.</p>
-          </div>
-        </div>
+      </div>
+      <div class="panel dots-wrap">
+        <canvas id="dots" aria-hidden="true"></canvas>
+        <p class="sr-only">Illustration: a grid of 3,600 dots. About 5 percent are lit at first, and the rest light up as you scroll.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 03 THE WEBSITE ============ -->
+<!-- ============ 03 THE TOOLBOX (live CSS lab) ============ -->
+<section id="lab" class="chapter-sec m-top" aria-labelledby="lab-h">
+  <div class="shell w-full">
+    <div class="focus grid gap-x-16 gap-y-4 md:grid-cols-2 md:items-end">
+      <div>
+        <p class="hud-label m-0 mb-4">The toolbox</p>
+        <h2 id="lab-h" class="h2">The full toolbox, <span class="light">running live.</span></h2>
+      </div>
+      <p class="lead !m-0">Every tile below is real modern code working on this page right now. Touch them. This is the kind of detail a template never ships with.</p>
+    </div>
+    <div class="lab mt-8">
+      <article class="tile">
+        <div class="stage"><div class="ring" id="labRing"><span id="labRingTxt">0%</span></div></div>
+        <div class="cap"><b>Scroll-linked motion</b><em>SCROLL POSITION TO CSS VARIABLES</em></div>
+      </article>
+      <article class="tile">
+        <div class="stage"><div class="live">Alive</div></div>
+        <div class="cap"><b>Living gradients</b><em>@PROPERTY + CONIC-GRADIENT</em></div>
+      </article>
+      <article class="tile">
+        <div class="stage tilt-stage" id="tiltStage"><div class="tilt" id="tiltCard"><i></i><span>DEPTH</span></div></div>
+        <div class="cap"><b>Real depth</b><em>3D TRANSFORMS + PERSPECTIVE</em></div>
+      </article>
+      <article class="tile">
+        <div class="stage type-stage"><div class="type" id="typeDemo">Forge</div><input id="wght" type="range" min="100" max="900" value="520" aria-label="Font weight"></div>
+        <div class="cap"><b>Variable type</b><em>ONE FONT, 800 WEIGHTS</em></div>
+      </article>
+      <article class="tile">
+        <div class="stage lens-stage" id="lensStage"><div class="lbg"></div><div class="word">Glass</div><div class="lens" id="lens"></div></div>
+        <div class="cap"><b>Frosted glass</b><em>BACKDROP-FILTER</em></div>
+      </article>
+      <article class="tile">
+        <div class="stage hue-stage" id="hueStage">
+          <div class="sw"><i style="--o:0"></i><i style="--o:1"></i><i style="--o:2"></i><i style="--o:3"></i><i style="--o:4"></i></div>
+          <input id="hue" type="range" min="0" max="360" value="300" aria-label="Hue">
+        </div>
+        <div class="cap"><b>Colour science</b><em>OKLCH() COLOUR</em></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 ANY NICHE (marquee) ============ -->
+<section id="niche" class="chapter-sec m-top" aria-labelledby="niche-h">
+  <div class="w-full">
+    <div class="shell focus">
+      <p class="hud-label m-0 mb-4">Any niche</p>
+      <h2 id="niche-h" class="h2 max-w-[16ch]">Any niche. <span class="light">Never a template.</span></h2>
+      <p class="lead">Boutique or law firm, bakery or builder. Every site starts from a blank page and your brand, so yours never looks like anyone else's.</p>
+    </div>
+    <div class="marq mt-12" aria-hidden="true"><div class="marq-track"><span>Boutiques</span><i class="hatch" aria-hidden="true"></i><span>Restaurants</span><i class="hatch" aria-hidden="true"></i><span>Contractors</span><i class="hatch" aria-hidden="true"></i><span>Law firms</span><i class="hatch" aria-hidden="true"></i><span>Clinics</span><i class="hatch" aria-hidden="true"></i><span>Salons</span><i class="hatch" aria-hidden="true"></i><span>Gyms</span><i class="hatch" aria-hidden="true"></i><span>Photographers</span><i class="hatch" aria-hidden="true"></i><span>Boutiques</span><i class="hatch" aria-hidden="true"></i><span>Restaurants</span><i class="hatch" aria-hidden="true"></i><span>Contractors</span><i class="hatch" aria-hidden="true"></i><span>Law firms</span><i class="hatch" aria-hidden="true"></i><span>Clinics</span><i class="hatch" aria-hidden="true"></i><span>Salons</span><i class="hatch" aria-hidden="true"></i><span>Gyms</span><i class="hatch" aria-hidden="true"></i><span>Photographers</span><i class="hatch" aria-hidden="true"></i></div></div>
+    <div class="marq rev outline mt-3" aria-hidden="true"><div class="marq-track"><span>Real estate</span><i class="hatch" aria-hidden="true"></i><span>E-commerce</span><i class="hatch" aria-hidden="true"></i><span>Dentists</span><i class="hatch" aria-hidden="true"></i><span>Coaches</span><i class="hatch" aria-hidden="true"></i><span>Auto shops</span><i class="hatch" aria-hidden="true"></i><span>Studios</span><i class="hatch" aria-hidden="true"></i><span>Cafes</span><i class="hatch" aria-hidden="true"></i><span>Agencies</span><i class="hatch" aria-hidden="true"></i><span>Real estate</span><i class="hatch" aria-hidden="true"></i><span>E-commerce</span><i class="hatch" aria-hidden="true"></i><span>Dentists</span><i class="hatch" aria-hidden="true"></i><span>Coaches</span><i class="hatch" aria-hidden="true"></i><span>Auto shops</span><i class="hatch" aria-hidden="true"></i><span>Studios</span><i class="hatch" aria-hidden="true"></i><span>Cafes</span><i class="hatch" aria-hidden="true"></i><span>Agencies</span><i class="hatch" aria-hidden="true"></i></div></div>
+    <p class="sr-only">Industries we build for include boutiques, restaurants, contractors, law firms, clinics, salons, gyms, photographers, real estate, e-commerce, dentists, coaches, auto shops, studios, cafes, agencies.</p>
+  </div>
+</section>
+
+<!-- ============ 05 THE WEBSITE ============ -->
 <section id="website" class="chapter-sec m-top" aria-labelledby="web-h">
-  <div class="shell">
-    <div class="focus md:max-w-[560px] panel flat">
-      <p class="hud-label m-0 mb-4">The Website</p>
-      <p class="price" id="web-h">$1,000 <span class="price-sub">one time</span></p>
-      <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">A custom site, built from scratch and ready to launch.</h3>
-      <ul class="list-none p-0 mt-6 mb-0">
-        <li class="rule py-3 flex gap-4 text-[18px]"><i class="hatch" aria-hidden="true"></i>Designed around your brand, never a template</li>
-        <li class="rule py-3 flex gap-4 text-[18px]"><i class="hatch" aria-hidden="true"></i>Built for phones first, fast everywhere</li>
-        <li class="rule py-3 flex gap-4 text-[18px]"><i class="hatch" aria-hidden="true"></i>A contact form that lands in your inbox</li>
-        <li class="rule py-3 flex gap-4 text-[18px]"><i class="hatch" aria-hidden="true"></i>Launched on your own domain</li>
-      </ul>
-      <a class="btn btn-solid mt-7" href="#start" data-plan="The Website, $1,000">Get the website
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+  <div class="shell w-full">
+    <div class="grid gap-12 md:grid-cols-[1.05fr_.95fr] md:gap-16 items-center">
+      <div class="focus">
+        <p class="hud-label m-0 mb-4">The Website</p>
+        <p class="price" id="web-h">$1,000 <span class="price-sub">one time</span></p>
+        <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">A custom site, built from scratch around your brand.</h3>
+        <ul class="list-none p-0 mt-6 mb-0">
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Designed from scratch</b><span class="block text-[16px] text-ink-soft mt-1">Never a template, never recycled.</span></div></li>
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Motion, depth and detail</b><span class="block text-[16px] text-ink-soft mt-1">The modern design tools most sites never touch.</span></div></li>
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Built for phones first</b><span class="block text-[16px] text-ink-soft mt-1">Fast and sharp on every screen.</span></div></li>
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Launched on your domain</b><span class="block text-[16px] text-ink-soft mt-1">With a contact form that lands in your inbox.</span></div></li>
+        </ul>
+        <a class="btn btn-solid mt-7" href="#start" data-plan="The Website, $1,000">Get the website
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="panel">
+        <p class="hud-label m-0">How it works</p>
+        <ol class="list-none p-0 m-0 mt-5">
+          <li class="rule py-5 flex gap-5"><span class="hud-label pt-1">01</span><div><h3 class="m-0 text-xl font-bold tracking-tight">Tell us about your business</h3><p class="mt-1 mb-0 text-[16px] leading-relaxed text-ink-soft">What you sell, who you sell to, and the look you want to beat.</p></div></li>
+          <li class="rule py-5 flex gap-5"><span class="hud-label pt-1">02</span><div><h3 class="m-0 text-xl font-bold tracking-tight">We design and build</h3><p class="mt-1 mb-0 text-[16px] leading-relaxed text-ink-soft">A custom design made for you, then built, tested and tuned.</p></div></li>
+          <li class="rule py-5 flex gap-5"><span class="hud-label pt-1">03</span><div><h3 class="m-0 text-xl font-bold tracking-tight">You launch and stand out</h3><p class="mt-1 mb-0 text-[16px] leading-relaxed text-ink-soft">Live on your own domain, ready to win customers from day one.</p></div></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 META ADS ============ -->
-<section id="growth" class="chapter-sec m-top" aria-labelledby="growth-h">
-  <div class="shell">
-    <div class="focus ml-auto md:max-w-[600px] panel flat">
-      <p class="hud-label m-0 mb-4">Meta Ads</p>
-      <p class="price" id="growth-h">$3,000 <span class="price-sub">per month</span></p>
-      <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">Facebook and Instagram ads that drive traffic to your website.</h3>
-      <ul class="list-none p-0 mt-6 mb-0">
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Meta ad campaigns</b><span class="block text-[16px] text-ink-soft mt-1">Facebook and Instagram campaigns, built, launched and managed for you.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Ad creatives</b><span class="block text-[16px] text-ink-soft mt-1">Images, short video and copy, made fresh for every campaign.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Traffic to your site</b><span class="block text-[16px] text-ink-soft mt-1">Every ad points to your website, so visitors turn into enquiries.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Tested and tuned</b><span class="block text-[16px] text-ink-soft mt-1">We watch the numbers, cut what slips and scale what works.</span></div></li>
-      </ul>
-      <p class="mt-6 mb-0 text-[17px] text-ink-soft">Everything is created in-house, so you never juggle freelancers.</p>
-      <a class="btn btn-solid mt-7" href="#start" data-plan="Meta Ads, $3,000 a month">Start driving traffic
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+<!-- ============ 06 GROWTH (add-ons) ============ -->
+<section id="grow" class="chapter-sec m-top" aria-labelledby="grow-h">
+  <div class="shell w-full">
+    <div class="focus max-w-[760px]">
+      <p class="hud-label m-0 mb-4">After launch</p>
+      <h2 id="grow-h" class="h2">Launch, then <span class="light">keep growing.</span></h2>
+      <p class="lead">Your website is the foundation. When you're ready for more customers, add one of these.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ 05 THE AI TEAM ============ -->
-<section id="ai" class="chapter-sec m-top" aria-labelledby="ai-h">
-  <div class="shell">
-    <div class="focus md:max-w-[600px] panel flat">
-      <p class="hud-label m-0 mb-4">The AI Team</p>
-      <p class="price" id="ai-h">$5,000 <span class="price-sub">per month</span></p>
-      <h3 class="mt-6 mb-0 text-[clamp(22px,2.2vw,30px)] font-bold tracking-[-.025em] leading-tight">A receptionist that never clocks out, and a ChatGPT that knows your business.</h3>
-      <ul class="list-none p-0 mt-6 mb-0">
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">AI receptionist</b><span class="block text-[16px] text-ink-soft mt-1">Answers calls and messages around the clock, takes details and books appointments.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Custom ChatGPT</b><span class="block text-[16px] text-ink-soft mt-1">Trained on your services, prices and policies, so it answers in your voice.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Built around you</b><span class="block text-[16px] text-ink-soft mt-1">Set up, tested and tuned by us before it ever talks to a customer.</span></div></li>
-        <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Hand-offs that matter</b><span class="block text-[16px] text-ink-soft mt-1">Hot leads and urgent requests go straight to you.</span></div></li>
-      </ul>
-      <a class="btn btn-solid mt-7" href="#start" data-plan="The AI Team, $5,000 a month">Add the AI team
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 06 HOW IT WORKS ============ -->
-<section id="how" class="chapter-sec m-top" aria-labelledby="how-h">
-  <div class="shell">
-    <div class="focus panel flat">
-      <h2 id="how-h" class="h2 max-w-[15ch]">Simple from <span class="light">the first message.</span></h2>
-      <ol class="list-none p-0 m-0 mt-12 grid gap-8 md:grid-cols-3">
-        <li class="rule pt-5">
-          <span class="hud-label">01</span>
-          <h3 class="mt-3 mb-0 text-2xl font-bold tracking-tight">Tell us about your business</h3>
-          <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">Send the form below with what you sell, who you sell to, and which plan fits.</p>
-        </li>
-        <li class="rule pt-5">
-          <span class="hud-label">02</span>
-          <h3 class="mt-3 mb-0 text-2xl font-bold tracking-tight">We build and launch</h3>
-          <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">Your website goes live first, designed and built from start to finish.</p>
-        </li>
-        <li class="rule pt-5">
-          <span class="hud-label">03</span>
-          <h3 class="mt-3 mb-0 text-2xl font-bold tracking-tight">We bring people in</h3>
-          <p class="mt-2 mb-0 text-[17px] leading-relaxed text-ink-soft">Meta ads send traffic to your site every month, and the AI team answers each caller and visitor.</p>
-        </li>
-      </ol>
+    <div class="grid gap-5 md:grid-cols-2 mt-10">
+      <div class="panel flex flex-col" style="padding:clamp(24px,2.6vw,36px)">
+        <p class="hud-label m-0">Meta Ads</p>
+        <p class="price !text-[clamp(48px,5.6vw,80px)]" style="margin-top:16px">$3,000 <span class="price-sub">per month</span></p>
+        <p class="mt-4 mb-0 text-[18px] font-semibold leading-snug">Facebook and Instagram ads that drive traffic to your website.</p>
+        <ul class="list-none p-0 mt-4 mb-6">
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Campaigns and creatives</b><span class="block text-[16px] text-ink-soft mt-1">Built, launched and managed for you.</span></div></li>
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Tested and tuned</b><span class="block text-[16px] text-ink-soft mt-1">We cut what slips and scale what works.</span></div></li>
+        </ul>
+        <a class="btn btn-ghost mt-auto self-start" href="#start" data-plan="Meta Ads, $3,000 a month">Add Meta ads
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="panel flex flex-col" style="padding:clamp(24px,2.6vw,36px)">
+        <p class="hud-label m-0">The AI Team</p>
+        <p class="price !text-[clamp(48px,5.6vw,80px)]" style="margin-top:16px">$5,000 <span class="price-sub">per month</span></p>
+        <p class="mt-4 mb-0 text-[18px] font-semibold leading-snug">An AI receptionist and a custom ChatGPT that knows your business.</p>
+        <ul class="list-none p-0 mt-4 mb-6">
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Answers around the clock</b><span class="block text-[16px] text-ink-soft mt-1">Calls and messages handled, appointments booked.</span></div></li>
+          <li class="rule py-3 flex gap-4"><i class="hatch" aria-hidden="true"></i><div><b class="text-[19px]">Trained on your business</b><span class="block text-[16px] text-ink-soft mt-1">Your services, prices and policies, in your voice.</span></div></li>
+        </ul>
+        <a class="btn btn-ghost mt-auto self-start" href="#start" data-plan="The AI Team, $5,000 a month">Add the AI team
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
@@ -378,7 +468,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
     <div class="grid gap-10 md:grid-cols-2 md:gap-16 items-start">
       <div class="md:sticky md:top-32">
         <h2 id="start-h" class="h2">Start your <span class="light">project.</span></h2>
-        <p class="lead">Tell us about your business and which plan fits. We'll reply with next steps.</p>
+        <p class="lead">Tell us about your business and what you want to build. We'll reply with next steps.</p>
       </div>
       <div class="panel" style="padding:clamp(24px,3vw,40px)">
         <form id="lead-form" method="POST" action="https://formspree.io/f/mykboqqg" novalidate>
@@ -522,18 +612,93 @@ enterBtn.focus({ preventScroll: true });
   });
 })();
 
+/* ------------------------------------------------ THE 5% (3,600 DOTS) --- */
+const dots = (() => {
+  const cv = $("#dots"), ctx = cv.getContext("2d"), sec = $("#five"), numEl = $("#toolCount"), lblEl = $("#toolLabel");
+  const N = 60, TOTAL = N * N; // 60 x 60 = 3,600
+  const rank = new Float32Array(TOTAL), ang = new Float32Array(TOTAL), rad = new Float32Array(TOTAL), tpl = new Uint8Array(TOTAL);
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < TOTAL; i++) {
+    const x = i % N, y = (i / N) | 0, dx = (x - (N - 1) / 2) / (N / 2), dy = (y - (N - 1) / 2) / (N / 2), d = Math.hypot(dx, dy) / 1.4142;
+    rad[i] = d; ang[i] = Math.atan2(dy, dx); rank[i] = clamp(d * 0.8 + rnd() * 0.3, 0, 1);
+  }
+  const order = Array.from({ length: TOTAL }, (_, i) => i);
+  for (let i = TOTAL - 1; i > 0; i--) { const j = (rnd() * (i + 1)) | 0; [order[i], order[j]] = [order[j], order[i]]; }
+  for (let i = 0; i < TOTAL * 0.05; i++) tpl[order[i]] = 1; // the 5% a template uses
+  let W = 0, H = 0, mx = -999, my = -999, p = 0, shownN = -1, label = "";
+  function size() {
+    const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size(); addEventListener("resize", size);
+  cv.addEventListener("pointermove", (e) => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  cv.addEventListener("pointerleave", () => { mx = my = -999; });
+  function update(t) {
+    const r = sec.getBoundingClientRect();
+    if (r.bottom < -40 || r.top > vh + 40) return;
+    const mid = (r.top + r.bottom) / 2;
+    p = clamp((vh * 0.98 - mid) / (vh * 0.42), 0, 1);
+    if (!cv.clientWidth) return;
+    if (Math.abs(cv.getBoundingClientRect().width - W) > 1) size();
+    ctx.clearRect(0, 0, W, H);
+    const cell = W / N, base = cell * 0.3, front = p * 1.4;
+    for (let i = 0; i < TOTAL; i++) {
+      const x = ((i % N) + 0.5) * cell, y = (((i / N) | 0) + 0.5) * cell;
+      const k = clamp((front - rank[i]) / 0.2, 0, 1);
+      const pulse = Math.exp(-(((front - rank[i]) / 0.1) ** 2)) * 0.9;
+      const dm = Math.hypot(x - mx, y - my), m = clamp(1 - dm / (cell * 7), 0, 1);
+      let rr, fill;
+      if (k > 0) {
+        const hh = 190 + 130 * (0.5 + 0.5 * Math.sin(ang[i] * 1.0 + rad[i] * 5 + t * 0.7));
+        fill = `hsl(${hh | 0} 85% ${74 - m * 8}%)`; rr = base * (0.85 + 0.35 * k + pulse + m * m * 1.2);
+      } else if (tpl[i]) { fill = "rgba(27,24,51,.9)"; rr = base * (0.9 + m * m * 1.0); }
+      else { fill = "rgba(27,24,51,.17)"; rr = base * (0.5 + m * m * 1.0); }
+      ctx.fillStyle = fill; ctx.beginPath(); ctx.arc(x, y, rr, 0, 6.2832); ctx.fill();
+    }
+    const n = Math.round(TOTAL * 0.05 + (TOTAL - TOTAL * 0.05) * smooth(0.05, 0.95, p));
+    if (n !== shownN) { shownN = n; numEl.textContent = n.toLocaleString(); }
+    const l = p > 0.55 ? "Local Forge uses" : "A typical template uses";
+    if (l !== label) { label = l; lblEl.textContent = l; }
+  }
+  return { update };
+})();
+
+/* ------------------------------------------------ THE TOOLBOX (live tiles) --- */
+const lab = (() => {
+  const ring = $("#labRing"), ringTxt = $("#labRingTxt");
+  const tiltStage = $("#tiltStage"), tilt = $("#tiltCard");
+  tiltStage.addEventListener("pointermove", (e) => {
+    const r = tiltStage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    tilt.style.transform = `rotateY(${x * 34}deg) rotateX(${-y * 28}deg)`; tilt.style.setProperty("--gx", (x + 0.5) * 100 + "%"); tilt.style.setProperty("--gy", (y + 0.5) * 100 + "%");
+  });
+  tiltStage.addEventListener("pointerleave", () => { tilt.style.transform = ""; tilt.style.setProperty("--gx", "50%"); tilt.style.setProperty("--gy", "50%"); });
+  const typeEl = $("#typeDemo"); $("#wght").addEventListener("input", (e) => { typeEl.style.fontWeight = e.target.value; });
+  const lensStage = $("#lensStage"), lens = $("#lens");
+  lensStage.addEventListener("pointermove", (e) => {
+    const r = lensStage.getBoundingClientRect();
+    lens.style.animation = "none"; lens.style.transform = `translate(${e.clientX - r.left - 46}px,${e.clientY - r.top - 46}px)`;
+  });
+  const hueStage = $("#hueStage"); $("#hue").addEventListener("input", (e) => hueStage.style.setProperty("--h", e.target.value));
+  function update() {
+    const r = ring.getBoundingClientRect();
+    const pr = clamp((vh - r.top) / (vh + r.height), 0, 1), v = Math.round(pr * 100);
+    ring.style.setProperty("--p", String(v)); if (ringTxt.textContent !== v + "%") ringTxt.textContent = v + "%";
+  }
+  return { update };
+})();
+
 /* ------------------------------------------------- SCROLL TIMELINE DATA --- */
 // Each anchor ties a scroll position to a scene state. The scene eases between neighbours.
-const CHAPTERS = ["Intro", "Who it's for", "The Website", "Meta Ads", "The AI Team", "How it works", "Start"];
+const CHAPTERS = ["Intro", "The 5%", "The Toolbox", "Any Niche", "The Website", "Growth", "Start"];
 const ANCHORS = [
   { el: "hero",    at: 0,        s: 0, ch: 0 },   // hammer raised
   { el: "hero",    at: 0.62,     s: 1, ch: 0 },   // the strike
   { el: "hero",    at: 1,        s: 2, ch: 0 },   // aftermath, tagline
-  { el: "who",     at: "center", s: 3, ch: 1 },
-  { el: "website", at: "center", s: 4, ch: 2 },
-  { el: "growth",  at: "center", s: 5, ch: 3 },
-  { el: "ai",      at: "center", s: 6, ch: 4 },
-  { el: "how",     at: "center", s: 7, ch: 5 },
+  { el: "five",    at: "center", s: 3, ch: 1 },
+  { el: "lab",     at: "center", s: 4, ch: 2 },
+  { el: "niche",   at: "center", s: 5, ch: 3 },
+  { el: "website", at: "center", s: 6, ch: 4 },
+  { el: "grow",    at: "center", s: 7, ch: 5 },
   { el: "start",   at: "end",    s: 8, ch: 6 },
 ];
 // ox/oy: orb position as a fraction of half-screen. os: orb size. amp/fq: surface noise. sx/sy/sz: squash.
@@ -542,12 +707,12 @@ const STATES = [
   // my/mos/mhs are the phone versions of oy/os/hs (the orb parks at the top of the screen so text can sit below it)
   { ox: 0.00,  oy: 0.02,  my: 0.02,  os: 0.56, mos: 0.62, amp: 0.10, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.00, iri: 0.95, hx: -2.2, hy: -0.75, ha: 46, hs: 1.0, mhs: 1, bgA: "#dcd9f1", bgB: "#c3c0e4" },
   { ox: 0.30,  oy: -0.02, my: 0.00,  os: 0.58, mos: 0.62, amp: 0.22, fq: 1.4, sx: 1.10, sy: 0.82, sz: 1.05, hue: 0.10, iri: 1.00, hx: -2.1, hy: 1.1, ha: -8, hs: 1.0, mhs: 1, bgA: "#e2d6f2", bgB: "#c6bfe6" },
-  { ox: 0.34,  oy: 0.00,  my: 0.12,  os: 0.58, mos: 0.58, amp: 0.14, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.16, iri: 0.95, hx: -2.1, hy: 1.1, ha: 34, hs: 1.0, mhs: 1, bgA: "#dcd9f1", bgB: "#c3c0e4" },
-  { ox: -0.34, oy: 0.00,  my: 0.50,  os: 0.50, mos: 0.34, amp: 0.16, fq: 1.0, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.26, iri: 0.95, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#dedaea", bgB: "#bdb8d4" },
-  { ox: 0.34,  oy: 0.00,  my: 0.50,  os: 0.54, mos: 0.36, amp: 0.05, fq: 0.9, sx: 1.30, sy: 0.92, sz: 0.36, hue: 0.45, iri: 0.90, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#d9dcf2", bgB: "#b9c0e6" },
-  { ox: -0.42, oy: 0.00,  my: 0.50,  os: 0.44, mos: 0.30, amp: 0.24, fq: 1.7, sx: 0.80, sy: 1.26, sz: 0.80, hue: 0.72, iri: 1.00, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#e6d6ee", bgB: "#c9b8e2" },
-  { ox: 0.42,  oy: 0.00,  my: 0.50,  os: 0.46, mos: 0.32, amp: 0.18, fq: 1.5, sx: 1.12, sy: 0.90, sz: 1.00, hue: 0.60, iri: 1.00, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#dbe3f3", bgB: "#bcc8e8" },
-  { ox: 0.52,  oy: 0.64,  my: 0.52,  os: 0.27, mos: 0.26, amp: 0.12, fq: 1.3, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.90, iri: 0.95, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#d6e0f0", bgB: "#bdc6e8" },
+  { ox: 0.34,  oy: 0.00,  my: 0.50,  os: 0.58, mos: 0.36, amp: 0.14, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.16, iri: 0.95, hx: -3.6, hy: 3.6, ha: 58, hs: 1.0, mhs: 1, bgA: "#dcd9f1", bgB: "#c3c0e4" },
+  { ox: 0.46,  oy: 0.00,  my: 0.50,  os: 0.07, mos: 0.10, amp: 0.14, fq: 1.0, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.26, iri: 0.95, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#dedaea", bgB: "#bdb8d4" },
+  { ox: 0.66,  oy: 0.74,  my: 0.50,  os: 0.22, mos: 0.30, amp: 0.20, fq: 1.4, sx: 1.10, sy: 0.95, sz: 1.00, hue: 0.45, iri: 0.90, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#d9dcf2", bgB: "#b9c0e6" },
+  { ox: 0.00,  oy: 0.04,  my: 0.50,  os: 0.60, mos: 0.34, amp: 0.24, fq: 1.5, sx: 0.92, sy: 1.10, sz: 0.90, hue: 0.72, iri: 1.00, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#e6d6ee", bgB: "#c9b8e2" },
+  { ox: 0.56,  oy: 0.62,  my: 0.52,  os: 0.24, mos: 0.26, amp: 0.12, fq: 1.3, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.90, iri: 0.95, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#d6e0f0", bgB: "#bdc6e8" },
+  { ox: 0.00,  oy: 0.80,  my: 0.50,  os: 0.20, mos: 0.28, amp: 0.14, fq: 1.2, sx: 1.00, sy: 1.00, sz: 1.00, hue: 0.60, iri: 1.00, hx: -9.0, hy: 8.0, ha: 70, hs: 1.0, mhs: 0, bgA: "#dbe3f3", bgB: "#bcc8e8" },
   { ox: -0.56, oy: -0.02, my: 0.52,  os: 0.36, mos: 0.26, amp: 0.10, fq: 1.0, sx: 1.00, sy: 1.00, sz: 1.00, hue: 1.00, iri: 0.95, hx: 1.5, hy: -1.1, ha: 98, hs: 0.95, mhs: 0, bgA: "#dcd9f1", bgB: "#c3c0e4" },
 ];
 const NUM_KEYS = ["ox", "oy", "my", "os", "mos", "amp", "fq", "sx", "sy", "sz", "hue", "iri", "hx", "hy", "ha", "hs", "mhs"];
@@ -959,6 +1124,7 @@ function tick(now) {
   cs = (reduceMotion || SNAP) ? target : cs + (target - cs) * (1 - Math.exp(-dt * 6.5));
   speed += ((Math.abs(cs - prevCs) / Math.max(dt, 0.001)) - speed) * Math.min(1, dt * 8); prevCs = cs;
   ui(cs, y, dt);
+  if (app.entered) { dots.update(now / 1000); lab.update(); }
   if (app.scene && app.entered) {
     app.scene.tickIntro(dt); app.scene.mouseStep(Math.min(1, dt * 4)); app.scene.render(cs, now / 1000, dt);
     // expanding shockwave ring, scrubbed by scroll so it also plays in reverse
