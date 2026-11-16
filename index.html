@@ -799,6 +799,31 @@
       </div>
     </section>
 
+    <section class="section-pad band" id="blog" aria-labelledby="blog-title">
+      <style>
+        #blog .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border-top:1px solid var(--line)}
+        #blog .blog-card{display:flex;flex-direction:column;gap:12px;padding:28px 28px 28px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
+        #blog .blog-card h3{font:400 clamp(24px,2.4vw,30px)/1.15 var(--serif);margin:0}
+        #blog .blog-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+        #blog .blog-card:hover h3{text-decoration:underline;text-decoration-color:var(--bronze);text-underline-offset:4px}
+        #blog .blog-more{margin-top:28px}
+        @media (max-width:860px){#blog .blog-grid{grid-template-columns:1fr}#blog .blog-card{padding-right:0}}
+      </style>
+      <div class="shell" data-reveal>
+        <div class="eyebrow" data-reveal-item style="--i:0">Field notes</div>
+        <h2 id="blog-title" class="display" data-reveal-item style="--i:1">Marketing guides for<br><em>home service contractors.</em></h2>
+        <div class="blog-grid" data-reveal-item style="--i:2">
+          <a class="blog-card" href="/blog/hvac-marketing/"><h3>HVAC marketing: 8 ways to fill your schedule</h3><p>Google Business Profile, local SEO, Meta ads and seasonal offers for HVAC companies.</p></a>
+          <a class="blog-card" href="/blog/plumbing-marketing/"><h3>Plumbing marketing: what actually brings in calls</h3><p>How to win emergency calls and planned jobs like water heater replacements.</p></a>
+          <a class="blog-card" href="/blog/roofing-marketing/"><h3>Roofing marketing: how roofers get leads online</h3><p>Project galleries, inspection offers and follow-up that turn leads into signed jobs.</p></a>
+          <a class="blog-card" href="/blog/electrician-marketing/"><h3>Electrician marketing: how to get more booked jobs</h3><p>Trust signals, service pages and ads for panel upgrades, EV chargers and repairs.</p></a>
+          <a class="blog-card" href="/blog/landscaping-marketing/"><h3>Landscaping marketing: how to win more yards</h3><p>Show your work, market ahead of the season and sell recurring maintenance.</p></a>
+          <a class="blog-card" href="/blog/contractor-marketing-budget/"><h3>How much should a contractor spend on marketing?</h3><p>Set a budget from your margins and capacity, then judge it by cost per booked job.</p></a>
+        </div>
+        <p class="blog-more"><a class="link-line" href="/blog/">All guides</a></p>
+      </div>
+    </section>
+
     <section class="section-pad" id="faq" aria-labelledby="faq-title">
       <div class="shell faq-layout" data-reveal>
         <div><div class="eyebrow" data-reveal-item style="--i:0">07 / Questions</div><h2 id="faq-title" class="display" data-reveal-item style="--i:1">Straight<br><em>answers.</em></h2><p class="text-muted copy-sm faq-note" data-reveal-item style="--i:2">Still deciding? Call or text <a class="link-line" href="tel:+14709352672">470-935-2672</a> and you'll reach me directly.</p></div>
