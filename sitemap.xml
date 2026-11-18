@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://localforge.tech/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://localforge.tech/blog/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -38,6 +38,21 @@
   <url>
     <loc>https://localforge.tech/blog/contractor-marketing-budget/</loc>
     <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localforge.tech/blog/local-seo-for-hvac-contractors/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localforge.tech/blog/google-ads-vs-local-services-ads/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localforge.tech/blog/ai-receptionist-for-contractors/</loc>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
