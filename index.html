@@ -438,6 +438,20 @@
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
     .band { background: var(--paper-deep); }
     .nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-dd { position: relative; }
+    .nav-dd-btn { display: inline-flex; align-items: center; gap: 7px; background: none; border: 0; padding: 12px 0; margin: -12px 0; color: inherit; font: inherit; font-size: 11px; text-transform: uppercase; letter-spacing: .13em; font-weight: 600; cursor: pointer; }
+    .nav-dd-btn svg { width: 9px; height: 6px; transition: transform .3s; }
+    .nav-dd.open .nav-dd-btn svg { transform: rotate(180deg); }
+    .nav-dd-panel { position: absolute; top: calc(100% + 18px); left: -22px; min-width: 230px; padding: 10px 0; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(25,26,23,.12); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .25s, transform .25s, visibility .25s; }
+    .nav-dd-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
+    .nav-dd.open .nav-dd-panel, .nav-dd:hover .nav-dd-panel, .nav-dd:focus-within .nav-dd-panel { opacity: 1; visibility: visible; transform: none; }
+    .nav-links .nav-dd-panel a { display: block; padding: 11px 22px; color: var(--ink); text-decoration: none; }
+    .nav-links .nav-dd-panel a:hover, .nav-links .nav-dd-panel a:focus-visible { background: var(--paper-deep); }
+    .mobile-menu { overflow-y: auto; }
+    .mobile-menu .mobile-sub { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; padding-top: 18px; }
+    .mobile-menu .mobile-sub span { grid-column: 1 / -1; font-size: 11px; letter-spacing: .17em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+    .mobile-menu .mobile-sub a { font-size: clamp(24px, 7vw, 32px); }
+
     .mobile-note { margin: 18px 0 0; }
     .mobile-note a { color: inherit; }
     .btn-block { width: 100%; }
@@ -524,6 +538,15 @@
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a class="link-line" href="#services">Services</a>
+        <div class="nav-dd" id="navDd">
+          <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="navDdPanel">Industries<svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor"/></svg></button>
+          <div class="nav-dd-panel" id="navDdPanel">
+            <a href="/hvac-marketing-agency/">HVAC marketing</a>
+            <a href="/plumbing-marketing-agency/">Plumbing marketing</a>
+            <a href="/roofing-marketing-agency/">Roofing marketing</a>
+            <a href="/electrician-marketing-agency/">Electrician marketing</a>
+          </div>
+        </div>
         <a class="link-line" href="#process">Process</a>
         <a class="link-line" href="#packages">The package</a>
         <a class="link-line" href="#founder">About</a>
@@ -544,6 +567,7 @@
       <a href="#packages">The package</a>
       <a href="#founder">About</a>
       <a href="#faq">FAQ</a>
+      <div class="mobile-sub"><span>Industries</span><a href="/hvac-marketing-agency/">HVAC</a><a href="/plumbing-marketing-agency/">Plumbing</a><a href="/roofing-marketing-agency/">Roofing</a><a href="/electrician-marketing-agency/">Electrician</a></div>
     </nav>
     <div>
       <a class="btn btn-block" href="https://calendly.com/aureliuskade08/local-forge-media-consult" target="_blank" rel="noopener">Book a free call</a>
@@ -996,7 +1020,7 @@
       updateScroll();
 
       // Highlight the nav link for the section in view.
-      const navLinks = $$('.nav-links a');
+      const navLinks = $$('.nav-links > a');
       const spyTargets = navLinks.map(link => document.getElementById(link.getAttribute('href').slice(1))).filter(Boolean);
       if ('IntersectionObserver' in window) {
         const spyObserver = new IntersectionObserver(entries => {
@@ -1006,6 +1030,16 @@
           });
         }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
         spyTargets.forEach(target => spyObserver.observe(target));
+      }
+
+      // Industries dropdown.
+      const dd = $('#navDd');
+      if (dd) {
+        const ddBtn = $('.nav-dd-btn', dd);
+        const setDd = open => { dd.classList.toggle('open', open); ddBtn.setAttribute('aria-expanded', String(open)); };
+        ddBtn.addEventListener('click', () => setDd(!dd.classList.contains('open')));
+        document.addEventListener('click', e => { if (!dd.contains(e.target)) setDd(false); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && dd.classList.contains('open')) { setDd(false); ddBtn.focus(); } });
       }
 
       // Mobile menu.
